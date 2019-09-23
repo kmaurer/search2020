@@ -195,7 +195,7 @@ Air Force Research Lab [\$21500] - Summer Faculty Fellowship  \hfill Summer 2016
   
 \textbf{Maurer K.} Osthus D., Loy A., (2019) \href{https://rdcu.be/bgbJV}{\it A tale of four cities: exploring the soul of State College, Detroit, Milledgeville and Biloxi} (Computational Statistics -- 64 downloads) 
 
-Garrett R.*, Nar A.*, Fisher T., \textbf{Maurer K.}, (2018) \href{https://www.theoj.org/joss-papers/joss.01096/10.21105.joss.01096.pdf}{\it ggvoronoi: Voronoi Diagrams and Heatmaps with ggplot2} (Journal of Open Source Software, 3(32) -- 8000+ package downloads from CRAN) 
+Garrett R.{\bf *}, Nar A.{\bf *}, Fisher T., \textbf{Maurer K.}, (2018) \href{https://www.theoj.org/joss-papers/joss.01096/10.21105.joss.01096.pdf}{\it ggvoronoi: Voronoi Diagrams and Heatmaps with ggplot2} (Journal of Open Source Software, 3(32) -- 8000+ package downloads from CRAN) 
 
 Alessio H., \textbf{Maurer K.}, (2018) \href{http://celt.muohio.edu/ject/fetch.php?id=734}{\it The Impact of Video Proctoring in Online Courses} (Journal on Excellence in College Teaching, 29(3&4)) 
 
@@ -213,9 +213,9 @@ Anderson J., Burks S., Carpenter J., Goette L., \textbf{Maurer K.}, Nosenzo D., 
   %  Submitted MANUSCRIPTS Section
 %----------------------------------------------------------------------------------------
   
-\section{MANUSCRIPTS SUBMITTED FOR PEER REVIEW} 
+\section{MANUSCRIPTS SUBMITTED FOR PEER REVIEW \newline \newline *student author} 
 
-\textbf{Maurer K.}, Bennette W., \textit{Facility Locations Utility for Uncovering Classifier Overconfidence} (International Conference on Machine Learning and Applications** - {\it accepted pending minor revision} )
+\textbf{Maurer K.}, Bennette W., \textit{Facility Locations Utility for Uncovering Classifier Overconfidence} (International Conference on Machine Learning and Applications -- competitive, blinded peer review process -- {\it accepted pending minor revision} )
 
 \textbf{Maurer K.}, Hudiburgh L., Werwinski L., \textit{What do Students Gain from Games? Dice Game vs. Word Problems} (Teaching Statistics - {\it under second round of review})
 
@@ -223,42 +223,39 @@ Anderson J., Burks S., Carpenter J., Goette L., \textbf{Maurer K.}, Nosenzo D., 
 
 \textbf{Maurer K.}, {\it Iterative Quantile Nearest-Neighbors} (Computational Statistics and Data Analysis - {\it in revision})
 
-Bennette W., \textbf{Maurer K.}, Sisti S. \textit{Harnessing Adversarial Distances to Uncover Overconfident Unknown Unknowns} (Winter Conference on Applications of Computer Vision** - {\it submitted}) 
+Swart D.{\bf *}, Hudiburgh L., \textbf{Maurer K.}, Smucker B., {\it Comparing Instructor Created vs. Externally Created Homework Assignments And Their Effects On Exam Scores}  (Statistics Education Research Journal - submitted)
 
-\hspace{0cm} **Conference manuscripts undergoing competitive, blinded peer review process \\
+Bennette W., \textbf{Maurer K.}, Sisti S. \textit{Harnessing Adversarial Distances to Uncover Overconfident Unknown Unknowns} (Winter Conference on Applications of Computer Vision -- competitive, blinded peer review process -- {\it submitted}) 
 
 %----------------------------------------------------------------------------------------
   %  Manuscripts in Preparation Section
 %---------------------------------------------------------------------------------------- 
 
-\section{MANUSCRIPTS IN PREPARATION \newline \newline *student author}
+\section{MANUSCRIPTS IN PREPARATION}
 
-{\bf Schweitzer B.*}, Fisher T., \textbf{Maurer K.}, {\bf Tuiyott A.*}, {\bf Carter L.*}, {\bf Garrett R.*}, {\it An Analysis of Rent Control Impact on New York City Housing Quality}. (2$^{nd}$ Place ASA Data Expo Challenge Invited Paper)
+Schweitzer B.{\bf *}, Fisher T., \textbf{Maurer K.}, Tuiyott A.{\bf *}, Carter L.{\bf *}, Garrett R.{\bf *}, {\it An Analysis of Rent Control Impact on New York City Housing Quality}. (2$^{nd}$ Place ASA Data Expo Challenge Invited Paper)
 
-{\bf Tuiyott A.*}, \textbf{Maurer K.}, Fisher T., {\bf Schweitzer B.*}, {\bf Carter L.*}, {\bf Garrett R.*}, {\it Mapping Immigrant Residency and Happiness in New York City}. (3$^{rd}$ Place ASA Data Expo Challenge Invited Paper)
+Tuiyott A.{\bf *}, \textbf{Maurer K.}, Fisher T., Schweitzer B.{\bf *}, Carter L.{\bf *}, Garrett R.{\bf *}, {\it Mapping Immigrant Residency and Happiness in New York City}. (3$^{rd}$ Place ASA Data Expo Challenge Invited Paper)
 
-Bennette W., \textbf{Maurer K.}, Sisti S., {\bf Dufek S.*}, {\bf Tusmatov B.*}, {\it Generalizations of Adversarial Distance in Identification of Unknown Unknowns}
+Bennette W., \textbf{Maurer K.}, Sisti S., Dufek S.{\bf *}, Tusmatov B.{\bf *}, {\it Generalizations of Adversarial Distance in Identification of Unknown Unknowns}
 
-{\bf Swart D.*}, Hudiburgh L., \textbf{Maurer K.}, Smucker B., {\it Comparing Instructor Created vs. Externally Created Homework Assignments And Their Effects On Exam Scores} 
-
-{\bf Garrett R.*}, Fisher T., \textbf{Maurer K.}, {\it Voronoi Applications in Data Science}
+Garrett R.{\bf *}, Fisher T., \textbf{Maurer K.}, {\it Voronoi Applications in Data Science}
 
 Coyle J., \textbf{Maurer K.}, {\it Disruptive Webpage Elements, an Eye-Tracking Experiment}. (target - Journal of Interactive Marketing) 
 
 Davis A., Fain J., Fritz K., Golden H., Grudzinski B., Johnson B., Keng Vang T., Lane C., Levy J., \textbf{Maurer K.}, Newcomer-Johnson T., McCarty J., Rech J., {\it Meta-Analysis of Ecological Impact of Beaver Dams} 
 
-Scarborough D., \textbf{Maurer K.}, Bailey-Van Kuren M., {\bf Pax L.*}, {\bf Summerford M.*}, {\it Evaluating Baby Food Manufacturer Stages Through IDSSI Protocol}  \\
+Scarborough D., \textbf{Maurer K.}, Bailey-Van Kuren M., Pax L.{\bf *}, Summerford M.{\bf *}, {\it Evaluating Baby Food Manufacturer Stages Through IDSSI Protocol}  \\
 
 % \textbf{Maurer K.}, Bennette W., Wang Y., Underwood A., {\it Bin-Weighted Ensemble Classifiers}
 %
 % \textbf{Maurer K.}, Vanderplas S., Hofmann H., {\it Developing and Evaluating Loss Functions for Binned Scatterplots Under Random and Standard Binning Algorithms}
 
 
-% \vspace{.05in}
 %----------------------------------------------------------------------------------------
   %  Presentations Section
 %---------------------------------------------------------------------------------------- 
-  
+
 \section{PRESENTATION}
 
 {\sl ``Lady Tasting Tea Lineup Plots for Visual Inference''} \hfill July 2019 \\
@@ -270,11 +267,11 @@ Joint Statistical Meetings, Vancouver BC
 {\sl ``Fantasy Basketball For Statistical Learning''} \hfill May 2018 \\
 Electronic Conference on Teaching Statistics, Online
 
+
+\section{PRESENTATION (cont.)}
+
 {\sl ``Bin-Weighted Ensemble Classifiers''} \hfill July 2017 \\
 Joint Statistical Meetings, Baltimore MD
-
-%   
-% \section{PRESENTATION (cont.)}
 
 {\sl ``Traditional vs. Simulation-Based:} \hfill August 2016 \\
 {\sl  Curricula Comparison in a Small Scale Educational Experiment''}\\
@@ -294,6 +291,7 @@ Joint Statistical Meetings, Montreal QC
 {\sl Interface for an Interactive Fitness Log''} \\
 Joint Statistical Meetings, Miami FL \\
 
+\vspace{0.1in}
 %----------------------------------------------------------------------------------------
   %	EXTRA-CURRICULAR ACTIVITIES SECTION
 %----------------------------------------------------------------------------------------
@@ -308,6 +306,8 @@ Joint Statistical Meetings, Miami FL \\
 {\it Member}, Dept of Statistics Hiring Search Committee \hfill  Fall 2016  \\
 {\it Member}, Graduate Project Defense Committee (19 students) \hfill Spring 2016 - Present \\
 
+\vspace{0.1in}
+
 \section{UNIVERSITY SERVICE} 
 
 {\it Team Mentor}, \href{https://miamioh.edu/fsb/centers/cads/experiential-learning/projects/index.html}{CADS Undergrad Experiential Learning Client Project}  \hfill Fall 2019 \\
@@ -317,6 +317,8 @@ Joint Statistical Meetings, Miami FL \\
 {\it Panelist}, New Faculty Orientation Panel \hfill  Fall 2016 \\
 {\it Volunteer}, Careers Involving Quantitative Science (CIQS) Day  \hfill  Spring 2016-2018  
 {\it Member}, Miami Datafest Committee \hfill  Fall 2015 - Present\\
+
+\vspace{0.1in}
 
 \section{PROFESSIONAL SERVICE} 
 {\it Judge}, Undergraduate Research Project Competition \hfill  Summer 2016 \\
