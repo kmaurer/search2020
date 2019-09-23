@@ -1,0 +1,360 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Graduate Curriculum Vitae
+% LaTeX Template
+% Version 1.1 (9/12/12)
+%
+% This template has been downloaded from:
+  % http://www.LaTeXTemplates.com
+%
+% Original author:
+  % Rensselaer Polytechnic Institute (http://www.rpi.edu/dept/arc/training/latex/resumes/)
+%
+% Important note:
+  % This template requires the res.cls file to be in the same directory as the
+% .tex file. The res.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+  %  PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+  
+  \documentclass[margin, 10pt]{res} % Use the res.cls style, the font size can be changed to 11pt or 12pt here
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{helvet} % Default font is the helvetica postscript font
+%\usepackage{newcent} % To change the default font to the new century schoolbook postscript font uncomment this line and comment the one above
+
+\setlength{\textwidth}{5.1in} % Text width of the document
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+  %	NAME AND ADDRESS SECTION
+%----------------------------------------------------------------------------------------
+  
+  
+  
+  %----------------------------------------------------------------------------------------
+  
+  \begin{resume}
+
+\moveleft.5\hoffset\centerline{\Large\bf Karsten Tait Maurer}
+\vspace{.2cm}
+\moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}
+\vspace{.2cm}
+
+%--------------------------------------------------------------------------
+  % Full Contact Information %
+  %--------------------------------------------------------------------------
+  \section{CONTACT INFORMATION}
+
+\begin{tabular}{p{5cm}p{5cm}}
+Department of Statistics 
+\newline Miami University 
+\newline 308b Upham Hall 
+\newline Oxford, OH 45056 
+
+&
+  
+\textit{Office:} 513-529-3404
+\newline \textit{Email:} maurerkt@miamioh.edu
+\newline \textit{Webpage:} \url{kmaurer.github.io}  \\
+
+\end{tabular}
+
+%----------------------------------------------------------------------------------------
+  %	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+  
+\section{EDUCATION}
+
+Ph.D., Statistics, August 2015 
+\newline Iowa State University, Ames IA  \\ [.25cm]
+M.S., Statistics, December 2011
+\newline Iowa State University, Ames IA  \\ [.25cm]
+B.A., Statistics and History, May 2009  
+\newline Minor in Mathematics, Graduated with Distinction 
+\newline University of Minnesota Morris, Morris MN 
+
+
+%----------------------------------------------------------------------------------------
+  %	Honors and awards
+%----------------------------------------------------------------------------------------
+  
+\section{HONORS/ AWARDS} 
+CAS Armstrong Interactive Media Studies Endowed Professor \hfill Fall 2018 - Present \\
+Faculty Mentor to Ben Schwietzer - \href{https://community.amstat.org/governmentstatisticssection/awards/dataexpo}{2\textsuperscript{nd} Place ASA Data Expo} \hfill Summer 2019\\
+Faculty Mentor to Alison Tuiyott - \href{https://community.amstat.org/governmentstatisticssection/awards/dataexpo}{3\textsuperscript{rd} Place ASA Data Expo} \hfill Summer 2019\\
+ISU Statistics Award for Undergraduate Mentoring \hfill Fall 2013 \& 2014 \\
+\href{http://stat-computing.org/dataexpo/2013/}{2\textsuperscript{nd} Place ASA Data Expo} - Teammates: Adam Loy, Dave Osthus \hfill Summer 2013 \\
+ISU Statistics Alumni Scholarship  \hfill Fall 2009 - Spring 2010 \\ 
+University of Minnesota Morris Chancellor's Scholarship  \hfill Fall 2005 - Spring 2009 \\
+University of Minnesota Morris Dean's List  \hfill  Fall 2005 - Spring 2009 
+
+%----------------------------------------------------------------------------------------
+  %	PROFESSIONAL EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+  
+\section{TEACHING EXPERIENCE}
+
+{\sl Assistant Professor} \hfill Fall 2015 - Present \\
+Miami University, Oxford OH
+\begin{itemize} \itemsep -2pt % Reduce space between items
+\item STA 301, Applied Statistics (1 Section)
+\item STA 402/502, Statistical Programming (1 Section)
+\item STA/IMS/JRN 404/504, Advanced Data Visualization (12 Sections)
+\item STA 467/567, Statistical Learning (3 Section)
+\item STA 477/480/600, Independent Studies in Statistics (12 students)
+\item STA 650, Topics in Statistics: Statistical Computing (1 Section)
+\item STA 660, Data Practicum (1 Section - Co-taught)
+\item STA 671, Environmental Statistics  (1 Section)
+\end{itemize}
+
+{\sl Course Instructor} \hfill Fall 2012 - Summer 2015 \\
+Iowa State University, Ames IA
+\begin{itemize} \itemsep -2pt % Reduce space between items
+\item Statistics 104, Introduction to Statistics (6 Sections)
+\item Statistics 305, Engineering Statistics (3 Sections)
+\item  ``A Week of R'' Workshops (7 Sections)
+\end{itemize} 
+
+
+
+%----------------------------------------------------------------------------------------
+  %  Advising
+%---------------------------------------------------------------------------------------- 
+  
+\section{UNDERGRAD RESEARCH ADVISING}
+
+\begin{itemize} \itemsep -2pt % Reduce space between items
+  \item Yuexi Wang - coding and results organization for computational experiments evaluating machine learning algorithms
+  \item Robert Garrett \& Austin Nar - Developed/Published {\texttt ggvoronoi} R Package for CRAN and JOSS publication
+  \item Alison Tuiyott, Ben Schweitzer \& Lydia Carter - Data Expo Challenge projects and currently advising on drafts of resulting invited publications 
+\end{itemize}
+
+  
+\section{GRADUATE RESEARCH ADVISING}
+\begin{itemize} \itemsep -2pt % Reduce space between items
+	\item Sally Dufek (current) - Adversarial algorithms within active learning
+  \item	Paul Gunsalus (current) - Predictive models for college athletics
+  \item Josh Morgan (current) - Embedding based image classifiers using active learning
+	\item Bunyodjon Tusmatov – Adversarial text processing within active learning 
+  \item	Matt Misterka – Edu. Research on student engagement
+  \item	George Woodbury (co-advised) - Visual inference without crowdsourcing
+  \item	David Swart (co-advised) - Edu. Research on homework design
+  \item	Gongmei Li - Variable selection for KNN approximation algorithm
+  \item	Rey Ducay - Ensemble classifier voting algorithms
+  \item	Chalie Liu (co-advised) - Efficient leverage-based sampling methods
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+  %  Ind Study
+%---------------------------------------------------------------------------------------- 
+%   
+% \section{INDEPENDENT STUDY}
+% 
+% 
+% \begin{itemize} \itemsep -2pt % Reduce space between items
+%   \item	Travis Sellers – Spring 2016 – Data Visualization (3 credits)
+%   \item	Rey Ducay – Spring & Summer 2016 – Statistical Programming (3 credits)
+%   \item	Gongmei Li – Summer 2017 to Present – Variable Selection (6 credits)
+%   \item	David Swart – Fall 2017 to Spring 2018 – Stat Education Research (3 credits)
+%   \item	Stefan Nguyen – Spring 2018 – Interactive Data Visualizations (1 credits) 
+%   \item	Matt Misterka – Spring 2019 – Stat Education Research (3 credits)
+%   \item	Yuexi Wang – Summer 2017 to Spring 2018 – Ensemble Classifiers (6 credits) 
+%   \item	Alison Tuiyott – Present – Data Expo Project Leadership (1 credit) 
+%   \item	Ben Schweitzer – Present – Data Expo Project Leadership (1 credit)
+%   \item	Robert Garrett – Spring 2018 – STA 467 Undergraduate Associate (1 credits) 
+%   \item	Amy Underwood –Summer 2016 – Graduate Research Assistant at AFRL
+%   \item	Michael Creutzinger – Spring 2018 – graduate research discussions
+% \end{itemize}
+
+%----------------------------------------------------------------------------------------
+  %  Sponsored Research Section
+%---------------------------------------------------------------------------------------- 
+  
+\section{SPONSORED RESEARCH}
+
+ASA-NCTM Joint Committee [\$11750] - K12 Educators Workshop \hfill Summer 2020 \\
+Armstrong Endowment [\$7500] - AIMS Collaborative Research \hfill Summer 2019 \\
+Air Force Research Lab [\$10000] - Research Extension Grant \hfill Fall 2018\\
+Air Force Research Lab [\$15500] - Visiting Faculty Researcher \hfill Summer 2018 \\
+Miami University [\$5000] - CAS Summer Research Appointment  \hfill Forgone 2018 \\
+Miami University [\$5000] - CFR Summer Research Appointment  \hfill Summer 2017 \\
+Air Force Research Lab [\$21500] - Summer Faculty Fellowship  \hfill Summer 2016
+
+%----------------------------------------------------------------------------------------
+  %  Publications Section
+%----------------------------------------------------------------------------------------
+  
+\section{PEER REVIEWED PUBLICATION \newline \newline *student author} 
+
+\textbf{Maurer K.} Hudiburgh L., Werwinski L., Bailer A.J., (2019) \href{https://www.tandfonline.com/doi/pdf/10.1080/00031305.2018.1537890?needAccess=true}{\it Content Audit for P-value Principles in Introductory Statistics} (The American Statistician -- 2800+ views, 2 citations)
+  
+\textbf{Maurer K.} Osthus D., Loy A., (2019) \href{https://rdcu.be/bgbJV}{\it A tale of four cities: exploring the soul of State College, Detroit, Milledgeville and Biloxi} (Computational Statistics -- 64 downloads) 
+
+Garrett R.*, Nar A.*, Fisher T., \textbf{Maurer K.}, (2018) \href{https://www.theoj.org/joss-papers/joss.01096/10.21105.joss.01096.pdf}{\it ggvoronoi: Voronoi Diagrams and Heatmaps with ggplot2} (Journal of Open Source Software, 3(32) -- 8000+ package downloads from CRAN) 
+
+Alessio H., \textbf{Maurer K.}, (2018) \href{http://celt.muohio.edu/ject/fetch.php?id=734}{\it The Impact of Video Proctoring in Online Courses} (Journal on Excellence in College Teaching, 29(3&4)) 
+
+Alessio H., Malay N., \textbf{Maurer K.}, Bailer J., Rubin B., (2018) \href{http://www.irrodl.org/index.php/irrodl/article/view/3698/4843}{\it Interaction of Proctoring and Student Major on Online Test Performance} (The International Review of Research in Open and Distributed Learning) 
+
+Miljkovic T., Miljkovic D., \textbf{Maurer K.}, (2018) \href{https://link.springer.com/article/10.1007/s13385-018-0178-2}{\it Examining the Impact on Mortality Arising from Climate Change: Important Findings for the Insurance Industry} (European Actuarial Journal -- 150+ downloads)
+
+Alessio H., Malay N., \textbf{Maurer K.}, Bailer J., Rubin B. (2017), \href{https://olj.onlinelearningconsortium.org/index.php/olj/article/view/885}{{\it Examining the Effect of Proctoring on Online Test Scores}} (Online Learning Journal -- 12 citations) 
+
+\textbf{Maurer K.}, Lock D. (2016), \href{http://escholarship.org/uc/item/0wm523b0}{{\it Comparison of Learning Outcomes for Randomization-Based and Traditional Inference Curricula in a Designed Educational Experiment}} (Technology Innovations in Statistics Education, Volume 8 -- 1400+ views, 400+ downloads, 8 citations)
+
+Anderson J., Burks S., Carpenter J., Goette L., \textbf{Maurer K.}, Nosenzo D., Potter R., Rocha K., Rustichini A., (2013) \href{https://link.springer.com/article/10.1007/s10683-012-9327-7}{{\it Self-selection and variations in the laboratory measurement of other-regarding preferences across subject pools: evidence from one college student and two adult samples}} (Experimental Economics, 16(2) -- 1200+ downloads)
+
+%----------------------------------------------------------------------------------------
+  %  Submitted MANUSCRIPTS Section
+%----------------------------------------------------------------------------------------
+  
+\section{MANUSCRIPTS SUBMITTED FOR PEER REVIEW} 
+
+\textbf{Maurer K.}, Bennette W., \textit{Facility Locations Utility for Uncovering Classifier Overconfidence} (International Conference on Machine Learning and Applications** - {\it accepted pending minor revision} )
+
+\textbf{Maurer K.}, Hudiburgh L., Werwinski L., \textit{What do Students Gain from Games? Dice Game vs. Word Problems} (Teaching Statistics - {\it under second round of review})
+
+\textbf{Maurer K.}, Hofmann H., {\it A \texttt{shiny} Opportunity to Interact with Large Databases in Introductory Statistics} (Technology Innovations in Statistics Education - {\it in revision})
+
+\textbf{Maurer K.}, {\it Iterative Quantile Nearest-Neighbors} (Computational Statistics and Data Analysis - {\it in revision})
+
+Bennette W., \textbf{Maurer K.}, Sisti S. \textit{Harnessing Adversarial Distances to Uncover Overconfident Unknown Unknowns} (Winter Conference on Applications of Computer Vision** - {\it submitted}) 
+
+\hspace{0cm} **Conference manuscripts undergoing competitive, blinded peer review process \\
+
+%----------------------------------------------------------------------------------------
+  %  Manuscripts in Preparation Section
+%---------------------------------------------------------------------------------------- 
+
+\section{MANUSCRIPTS IN PREPARATION \newline \newline *student author}
+
+{\bf Schweitzer B.*}, Fisher T., \textbf{Maurer K.}, {\bf Tuiyott A.*}, {\bf Carter L.*}, {\bf Garrett R.*}, {\it An Analysis of Rent Control Impact on New York City Housing Quality}. (2$^{nd}$ Place ASA Data Expo Challenge Invited Paper)
+
+{\bf Tuiyott A.*}, \textbf{Maurer K.}, Fisher T., {\bf Schweitzer B.*}, {\bf Carter L.*}, {\bf Garrett R.*}, {\it Mapping Immigrant Residency and Happiness in New York City}. (3$^{rd}$ Place ASA Data Expo Challenge Invited Paper)
+
+Bennette W., \textbf{Maurer K.}, Sisti S., {\bf Dufek S.*}, {\bf Tusmatov B.*}, {\it Generalizations of Adversarial Distance in Identification of Unknown Unknowns}
+
+{\bf Swart D.*}, Hudiburgh L., \textbf{Maurer K.}, Smucker B., {\it Comparing Instructor Created vs. Externally Created Homework Assignments And Their Effects On Exam Scores} 
+
+{\bf Garrett R.*}, Fisher T., \textbf{Maurer K.}, {\it Voronoi Applications in Data Science}
+
+Coyle J., \textbf{Maurer K.}, {\it Disruptive Webpage Elements, an Eye-Tracking Experiment}. (target - Journal of Interactive Marketing) 
+
+Davis A., Fain J., Fritz K., Golden H., Grudzinski B., Johnson B., Keng Vang T., Lane C., Levy J., \textbf{Maurer K.}, Newcomer-Johnson T., McCarty J., Rech J., {\it Meta-Analysis of Ecological Impact of Beaver Dams} 
+
+Scarborough D., \textbf{Maurer K.}, Bailey-Van Kuren M., {\bf Pax L.*}, {\bf Summerford M.*}, {\it Evaluating Baby Food Manufacturer Stages Through IDSSI Protocol}  \\
+
+% \textbf{Maurer K.}, Bennette W., Wang Y., Underwood A., {\it Bin-Weighted Ensemble Classifiers}
+%
+% \textbf{Maurer K.}, Vanderplas S., Hofmann H., {\it Developing and Evaluating Loss Functions for Binned Scatterplots Under Random and Standard Binning Algorithms}
+
+
+% \vspace{.05in}
+%----------------------------------------------------------------------------------------
+  %  Presentations Section
+%---------------------------------------------------------------------------------------- 
+  
+\section{PRESENTATION}
+
+{\sl ``Lady Tasting Tea Lineup Plots for Visual Inference''} \hfill July 2019 \\
+Joint Statistical Meetings, Denver CO
+
+{\sl ``Iterative Quantile Nearest-Neighbors''} \hfill July 2018 \\
+Joint Statistical Meetings, Vancouver BC
+
+{\sl ``Fantasy Basketball For Statistical Learning''} \hfill May 2018 \\
+Electronic Conference on Teaching Statistics, Online
+
+{\sl ``Bin-Weighted Ensemble Classifiers''} \hfill July 2017 \\
+Joint Statistical Meetings, Baltimore MD
+
+%   
+% \section{PRESENTATION (cont.)}
+
+{\sl ``Traditional vs. Simulation-Based:} \hfill August 2016 \\
+{\sl  Curricula Comparison in a Small Scale Educational Experiment''}\\
+Joint Statistical Meetings, Chicago IL
+
+{\sl ``Comparison of Learning Outcomes from Traditional and} \hfill August 2014 \\
+{\sl Randomization-Based Inference Curricula in a Designed Experiment''}\\
+Joint Statistical Meetings, Boston MA
+
+{\sl ``A Shiny New Opportunity for Big Data in Statistics Education''} \hfill July 2014 \\
+International Conference on Teaching Statistics, Flagstaff AZ
+
+{\sl ``Locating the Heart of the Community''} \hfill August 2013 \\
+Joint Statistical Meetings, Montreal QC
+
+{\sl ``Using R to Construct a Graphical User} \hfill August 2011 \\
+{\sl Interface for an Interactive Fitness Log''} \\
+Joint Statistical Meetings, Miami FL \\
+
+%----------------------------------------------------------------------------------------
+  %	EXTRA-CURRICULAR ACTIVITIES SECTION
+%----------------------------------------------------------------------------------------
+\section{DEPARTMENT SERVICE}   
+{\it Coordinator}, Departmental Colloquia \hfill Fall 2019 \\
+{\it Member}, Dept of Statistics TCPL Hiring Committee \hfill  Spring 2018 \\
+{\it Member}, Dept of Statistics Undergrad Curriculum Committee \hfill  Spring 2018 \\
+{\it Advisor}, Undergraduate Academic Advisor (70 students) \hfill Fall 2017 - Present \\
+{\it Advisor}, Undergraduate Researchers (6 students) \hfill Fall 2016 - Present \\
+{\it Advisor}, Graduate Researchers (10 students) \hfill Fall 2016 - Present \\
+{\it Member}, Dept of Statistics Grad Ed Committee \hfill  Fall 2016 - Present  \\
+{\it Member}, Dept of Statistics Hiring Search Committee \hfill  Fall 2016  \\
+{\it Member}, Graduate Project Defense Committee (19 students) \hfill Spring 2016 - Present \\
+
+\section{UNIVERSITY SERVICE} 
+
+{\it Team Mentor}, \href{https://miamioh.edu/fsb/centers/cads/experiential-learning/projects/index.html}{CADS Undergrad Experiential Learning Client Project}  \hfill Fall 2019 \\
+{\it Member}, CAS Committee on Big Ideas in Digital Media \hfill  Spring 2018 \\
+{\it Volunteer}, Bridges for underrepresented students into STEM \hfill  Fall 2017-2019 \\
+{\it Panelist}, Students Together Empowering Minorities Conversation Series \hfill Fall 2017\\
+{\it Panelist}, New Faculty Orientation Panel \hfill  Fall 2016 \\
+{\it Volunteer}, Careers Involving Quantitative Science (CIQS) Day  \hfill  Spring 2016-2018  
+{\it Member}, Miami Datafest Committee \hfill  Fall 2015 - Present\\
+
+\section{PROFESSIONAL SERVICE} 
+{\it Judge}, Undergraduate Research Project Competition \hfill  Summer 2016 \\
+{\it Peer Reviewer}, Journal for Statistical Education \hfill  Spring 2016 - Present  \\
+{\it Peer Reviewer}, The American Statistician \hfill  Winter 2015 \\
+{\it Member}, Miami Datafest Committee \hfill  Fall 2015 - Present  \\
+
+\newpage
+
+\section{COMMUNITY SERVICE} 
+{\it Instructor}, Client Data Visualization Projects \hfill  Fall 2015 - Spring 2017 
+\begin{itemize} \itemsep -2pt
+\item Miami EHWB - \href{http://dataviz.miamioh.edu/DataVizClassFall2015/MiamiEmployeeHealthApps/EmployeeGymUsage/}{Gym and Benefit Usage App}
+\item Cincinnati Shakespeare Co. - \href{http://dataviz.miamioh.edu/Shakespeare/}{Ticket Sales App (Redesign)}
+\item Butler County Health - \href{http://dataviz.miamioh.edu/BCH/Butler_County_Infant_Mortality/}{Interactive Infant Mortality Report App}
+\item St. Louis County EMS - \href{http://dataviz.miamioh.edu/Minnesota_EMS/}{Emergency Response Times App}
+\item Scripps Gerontology Center - \href{http://dataviz.miamioh.edu/DataVizClassFall2015/OhioNursingSurveyApps/EmployeeSafety/}{Nursing Facility Survey App}\\
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	EXTRA-CURRICULAR ACTIVITIES SECTION
+%----------------------------------------------------------------------------------------
+
+\section{OTHER EXPERIENCE} 
+
+{\it Member}, Miami University New Faculty Research Community \hfill  Fall 2016 \\
+{\it Member}, Miami University Teaching Enhancement Prog. \hfill  Fall 2015 - Spring 2016  \\
+{\it Member}, ISU Graphics Working Group \hfill  Fall 2009 - Summer 2015  \\
+{\it Coordinator}, ISU Graphics Working Group Speaker Series \hfill  Spring 2014  \\
+{\it Advisor}, Midwest Undergraduate Data Analytics Comp. \hfill  Spring 2013 and 2014  \\
+{\it Attendee}, Collaborative Undergraduate Research Workshop \hfill Fall 2014\\
+{\it Treasurer}, STAT-ers Graduate Student Club \hfill  Fall 2012 - Summer 2013 \\
+{\it Consultant}, ISU Survey and Behavioral Research Services \hfill Fall 2011 - Spring 2012 \\
+{\it Online Homework Assistant}, Stat 101 at ISU \hfill Fall 2010 - Summer 2011 \\
+{\it Associate Researcher}, UMM Trucking Safety Project \hfill Summer 2010 \\
+{\it Lab Instructor}, Stat 101 at ISU \hfill Fall 2009 - Spring 2010 \\
+
+%----------------------------------------------------------------------------------------
+
+\end{resume}
+\end{document}
