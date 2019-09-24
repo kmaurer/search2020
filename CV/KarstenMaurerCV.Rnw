@@ -233,9 +233,9 @@ Bennette W., \textbf{Maurer K.}, Sisti S. \textit{Harnessing Adversarial Distanc
 
 \section{MANUSCRIPTS IN PREPARATION}
 
-Schweitzer B.{\bf *}, Fisher T., \textbf{Maurer K.}, Tuiyott A.{\bf *}, Carter L.{\bf *}, Garrett R.{\bf *}, {\it An Analysis of Rent Control Impact on New York City Housing Quality}. (2$^{nd}$ Place ASA Data Expo Challenge Invited Paper)
+Schweitzer B.{\bf *}, Garrett R.{\bf *}, Carter L.{\bf *}, Tuiyott A.{\bf *}, Fisher T., \textbf{Maurer K.}, {\it An Analysis of Rent Control Impact on New York City Housing Quality}. (2$^{nd}$ Place ASA Data Expo Challenge Invited Paper to Computational Statistics)
 
-Tuiyott A.{\bf *}, \textbf{Maurer K.}, Fisher T., Schweitzer B.{\bf *}, Carter L.{\bf *}, Garrett R.{\bf *}, {\it Mapping Immigrant Residency and Happiness in New York City}. (3$^{rd}$ Place ASA Data Expo Challenge Invited Paper)
+Tuiyott A.{\bf *}, Garrett R.{\bf *}, Carter L.{\bf *}, Schweitzer B.{\bf *}, \textbf{Maurer K.}, Fisher T., {\it Mapping Immigrant Residency and Happiness in New York City}. (3$^{rd}$ Place ASA Data Expo Challenge Invited Paper to Computational Statistics)
 
 Bennette W., \textbf{Maurer K.}, Sisti S., Dufek S.{\bf *}, Tusmatov B.{\bf *}, {\it Generalizations of Adversarial Distance in Identification of Unknown Unknowns}
 
