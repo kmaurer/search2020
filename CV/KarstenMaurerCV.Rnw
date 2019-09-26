@@ -239,6 +239,8 @@ Tuiyott A.{\bf *}, Garrett R.{\bf *}, Carter L.{\bf *}, Schweitzer B.{\bf *}, \t
 
 Bennette W., \textbf{Maurer K.}, Sisti S., Dufek S.{\bf *}, Tusmatov B.{\bf *}, {\it Generalizations of Adversarial Distance in Identification of Unknown Unknowns}
 
+Morgan J.{\bf *}, Femiani J.,\textbf{Maurer K.}, {\it Embedding Based Image Classifiers in an Active Learning Framework}
+
 Garrett R.{\bf *}, Fisher T., \textbf{Maurer K.}, {\it Voronoi Applications in Data Science}
 
 Coyle J., \textbf{Maurer K.}, {\it Disruptive Webpage Elements, an Eye-Tracking Experiment}. (target - Journal of Interactive Marketing) 
