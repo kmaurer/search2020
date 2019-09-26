@@ -266,11 +266,11 @@ Joint Statistical Meetings, Denver CO
 {\sl ``Iterative Quantile Nearest-Neighbors''} \hfill July 2018 \\
 Joint Statistical Meetings, Vancouver BC
 
-{\sl ``Fantasy Basketball For Statistical Learning''} \hfill May 2018 \\
-Electronic Conference on Teaching Statistics, Online
-
 
 \section{PRESENTATION (cont.)}
+
+{\sl ``Fantasy Basketball For Statistical Learning''} \hfill May 2018 \\
+Electronic Conference on Teaching Statistics, Online
 
 {\sl ``Bin-Weighted Ensemble Classifiers''} \hfill July 2017 \\
 Joint Statistical Meetings, Baltimore MD
