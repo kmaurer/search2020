@@ -191,11 +191,11 @@ Air Force Research Lab [\$21500] - Summer Faculty Fellowship  \hfill Summer 2016
   
 \section{PEER REVIEWED PUBLICATION \newline \newline *student author} 
 
-\textbf{Maurer K.} Hudiburgh L., Werwinski L., Bailer A.J., (2019) \href{https://www.tandfonline.com/doi/pdf/10.1080/00031305.2018.1537890?needAccess=true}{\it Content Audit for P-value Principles in Introductory Statistics} (The American Statistician -- 2800+ views, 2 citations)
+\textbf{Maurer K.} Hudiburgh L., Werwinski L., Bailer A.J., (2019) \href{https://www.tandfonline.com/doi/pdf/10.1080/00031305.2018.1537890?needAccess=true}{\it Content Audit for P-value Principles in Introductory Statistics} (The American Statistician -- 2900+ views, 3 citations)
   
 \textbf{Maurer K.} Osthus D., Loy A., (2019) \href{https://rdcu.be/bgbJV}{\it A tale of four cities: exploring the soul of State College, Detroit, Milledgeville and Biloxi} (Computational Statistics -- 64 downloads) 
 
-Garrett R.{\bf *}, Nar A.{\bf *}, Fisher T., \textbf{Maurer K.}, (2018) \href{https://www.theoj.org/joss-papers/joss.01096/10.21105.joss.01096.pdf}{\it ggvoronoi: Voronoi Diagrams and Heatmaps with ggplot2} (Journal of Open Source Software, 3(32) -- 8000+ package downloads from CRAN) 
+Garrett R.{\bf *}, Nar A.{\bf *}, Fisher T., \textbf{Maurer K.}, (2018) \href{https://www.theoj.org/joss-papers/joss.01096/10.21105.joss.01096.pdf}{\it ggvoronoi: Voronoi Diagrams and Heatmaps with ggplot2} (Journal of Open Source Software, 3(32) -- 8300+ package downloads from CRAN) 
 
 Alessio H., \textbf{Maurer K.}, (2018) \href{http://celt.muohio.edu/ject/fetch.php?id=734}{\it The Impact of Video Proctoring in Online Courses} (Journal on Excellence in College Teaching, 29(3&4)) 
 
@@ -205,9 +205,9 @@ Miljkovic T., Miljkovic D., \textbf{Maurer K.}, (2018) \href{https://link.spring
 
 Alessio H., Malay N., \textbf{Maurer K.}, Bailer J., Rubin B. (2017), \href{https://olj.onlinelearningconsortium.org/index.php/olj/article/view/885}{{\it Examining the Effect of Proctoring on Online Test Scores}} (Online Learning Journal -- 12 citations) 
 
-\textbf{Maurer K.}, Lock D. (2016), \href{http://escholarship.org/uc/item/0wm523b0}{{\it Comparison of Learning Outcomes for Randomization-Based and Traditional Inference Curricula in a Designed Educational Experiment}} (Technology Innovations in Statistics Education, Volume 8 -- 1400+ views, 400+ downloads, 8 citations)
+\textbf{Maurer K.}, Lock D. (2016), \href{http://escholarship.org/uc/item/0wm523b0}{{\it Comparison of Learning Outcomes for Randomization-Based and Traditional Inference Curricula in a Designed Educational Experiment}} (Technology Innovations in Statistics Education, Volume 8 -- 1400+ views, 400+ downloads, 7 citations)
 
-Anderson J., Burks S., Carpenter J., Goette L., \textbf{Maurer K.}, Nosenzo D., Potter R., Rocha K., Rustichini A., (2013) \href{https://link.springer.com/article/10.1007/s10683-012-9327-7}{{\it Self-selection and variations in the laboratory measurement of other-regarding preferences across subject pools: evidence from one college student and two adult samples}} (Experimental Economics, 16(2) -- 1200+ downloads)
+Anderson J., Burks S., Carpenter J., Goette L., \textbf{Maurer K.}, Nosenzo D., Potter R., Rocha K., Rustichini A., (2013) \href{https://link.springer.com/article/10.1007/s10683-012-9327-7}{{\it Self-selection and variations in the laboratory measurement of other-regarding preferences across subject pools: evidence from one college student and two adult samples}} (Experimental Economics, 16(2) -- 71 citations)
 
 %----------------------------------------------------------------------------------------
   %  Submitted MANUSCRIPTS Section
