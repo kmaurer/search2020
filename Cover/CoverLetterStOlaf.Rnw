@@ -31,7 +31,7 @@
 
 \topmargin=-2.3in % Moves the top of the document 1 inch above the default
 \textheight=12.5in % Total height of the text on the page before text goes on to the next page, this can be increased in a longer letter
-\oddsidemargin=-16pt % Position of the left margin, can be negative or positive if you want more or less room
+\oddsidemargin=-18pt % Position of the left margin, can be negative or positive if you want more or less room
 \textwidth=7in 
 \let\raggedleft\raggedright % Pushes the date (at the top) to the left, comment this line to have the date on the right
 
@@ -41,7 +41,7 @@
 %	ADDRESSEE SECTION
 %----------------------------------------------------------------------------------------
 
-\begin{letter}{Dr. Paul Roback \\
+\begin{letter}{Dr. Paul Roback and Hiring Committee\\
 St. Olaf College \\
 Department of Mathematics, Statistics, and Computer Science\\
 1520 St. Olaf Avenue, Northfield, MN  55057
@@ -69,11 +69,11 @@ Karsten T. Maurer \\
 
 \opening{Dr. Roback and Hiring Committee Members,} 
 
-I am writing to apply for the advertised position of assistant professor of Statistics in your department. I am currently a tenure track assistant professor of Statistics in my fifth year at Miami University in Oxford, Ohio. While I am deeply appreciative of my wonderful students, colleagues and mentors at Miami, I am seeking to relocate closer to family in Minnesota. I was delighted to find that St. Olaf is hiring, as it is an excellent professional opportunity at a college with a strong academic reputation; and from first hand experience is a beautiful campus in a beautiful town. My substantial teaching experience, curricular development for data science and statistics, productive research program and active service contributions in my current tenure track position demonstrate that I am a strong candidate who is imminently capable of the role described in the job posting. 
+I am writing to apply for the advertised position of assistant professor of Statistics in your department. I am currently a tenure track assistant professor of Statistics in my fifth year at Miami University in Oxford, Ohio. While I am deeply appreciative of my wonderful students, colleagues and mentors at Miami, I am seeking to relocate closer to family in Minnesota. I was delighted to find that St. Olaf is hiring, as it is an excellent professional opportunity at a college with a strong academic reputation; and I know from first-hand experience it is a beautiful campus in a beautiful town. My substantial teaching experience, curricular development for data science and statistics, productive research program and active service contributions in my current tenure track position demonstrate that I am a strong candidate who is imminently capable of the role described in the job posting. 
 
 Between my graduate experience and my current position, I have taught statistics for over seven years at the university level, with 29 class sections in a wide variety of courses including: data visualization, statistical learning, statistical programming, statistical computing, data practicum, and several variants of introductory statistics. I am passionate and effective at developing and teaching courses focused on the methodological, computational and communicative skills necessary in data science and statistics. This passion bleeds into my research, with most of my work in the areas of statistics education, statistical/machine learning methodology and providing statistical contributions on collaborative interdisciplinary projects. I also serve as an advisor to undergraduate teams doing extra-curricular research projects and client projects. In my service record, you will find that I am heavily engaged in departmental and university service. I serve on committees for undergraduate curriculum, graduate education, hiring, and colloquium coordination. I also advise and recruit many statistics students, help to organize the ASA Datafest at Miami, and volunteer at events that encourage high school students from underrepresented groups to pursue STEM and Data careers. 
 
-My substantial experience in teaching and curriculum development for data visualization, statistical learning and statistical computing make me a ideally suited candidate for primary roles described in your advertised position. The applied data science bent to my statistical teaching and research would fit well within the interdisciplinary makeup of your department. Additionally, my experience in advising undergraduate research and client projects, and active service role in the engagement and inclusion of students in data science appear to align with the values demonstrated through the Center for Interdisciplinary Research and dataSTEM initiative within your department. I would greatly enjoy discussing the position with you in the weeks to come. Thank you very much for your time and consideration.
+My substantial experience in teaching and curriculum development for data visualization, statistical learning and statistical computing make me an ideally suited candidate for the primary roles described in your advertised position. The applied data science bent to my statistical teaching and research would fit well within the interdisciplinary makeup of your department. Additionally, my experience in advising undergraduate research and client projects, and active service role in the engagement and inclusion of students in data science appear to align with the values demonstrated through the Center for Interdisciplinary Research and dataSTEM initiatives within your department. I would greatly enjoy discussing the position with you in the weeks to come. Thank you very much for your time and consideration.
 
 \addtolength{\medskipamount}{-1\medskipamount}
 \closing{Sincerely,}
