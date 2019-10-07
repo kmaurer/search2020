@@ -28,11 +28,17 @@
 
 \vspace{.1in}
 
-About a decade ago, as I prepared myself for my first days in graduate school, I was feeling terribly nervious about my graduate assistantship where I would lead an introductory statistics lab of 50 students. I reached out to my undergraduate history advisor, Marynel Ryan Van Zee, and asked for advice about starting to teach. She responded that it was natural to worry teaching, but that I shouldn't worry too much given that I am a white male of average height. 
+About a decade ago, as I prepared myself for my first days in graduate school, I was feeling terribly nervious about my graduate assistantship where I would lead an introductory statistics lab section. I reached out to my undergraduate history advisor, Marynel Ryan Van Zee, and asked for advice about starting to teach. She responded that it was natural to worry teaching, but that I shouldn't worry too much given that I am a white male of average height. 
 
 Acknowledge privilage that helped me through my education: white, male, middle-class
 
 Importance of diversity and inclusion in STEM (and specifically Stat and DS)
+
+\href{https://magazine.amstat.org/blog/2018/08/01/2017-degree-report/}{Amstat News Report (2017)}
+
+\href{https://www.aauw.org/research/solving-the-equation/}{AAUW Survey Data (2017)}
+
+\href{https://theindex.generalassemb.ly/data-science-education-lags-behind-in-diversity-ff59ffa718ec}{General Assembly Article (2017)}
 
 Classroom management: Demonstrate that respect and value placed on them as individuals. Disability accomodations. Inclusive activity in pedagogy. 
 
