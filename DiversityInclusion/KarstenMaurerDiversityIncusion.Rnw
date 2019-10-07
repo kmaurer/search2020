@@ -1,0 +1,43 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{fullpage}
+\usepackage{graphicx,float,wrapfig,subfig,tabularx,ulem}
+%\usepackage{csquotes}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+%opening
+\title{Diversity and Inclusion}
+\author{Karsten Maurer}
+\date{}
+
+\begin{document}
+
+
+\onehalfspacing
+
+\begin{center}
+\Large Diversity and Inclusion \\
+\normalsize Karsten Maurer \\
+\end{center}
+
+\vspace{.1in}
+
+About a decade ago, as I prepared myself for my first days in graduate school, I was feeling terribly nervious about my graduate assistantship where I would lead an introductory statistics lab of 50 students. I reached out to my undergraduate history advisor, Marynel Ryan Van Zee, and asked for advice about starting to teach. She responded that it was natural to worry teaching, but that I shouldn't worry too much given that I am a white male of average height. 
+
+Acknowledge privilage that helped me through my education: white, male, middle-class
+
+Importance of diversity and inclusion in STEM (and specifically Stat and DS)
+
+Classroom management: Demonstrate that respect and value placed on them as individuals. Disability accomodations. Inclusive activity in pedagogy. 
+
+Recruitment and retention: CIQS, Bridges, STEM conversation series
+
+
+
+\end{document}
