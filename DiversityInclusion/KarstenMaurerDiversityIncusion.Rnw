@@ -10,6 +10,7 @@
 \usepackage{url}
 \usepackage{setspace}
 \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\pagestyle{empty}
 
 %opening
 \title{Diversity and Inclusion}
@@ -28,22 +29,14 @@
 
 \vspace{.1in}
 
-About a decade ago, as I prepared myself for my first days in graduate school, I was feeling terribly nervious about my graduate assistantship where I would lead an introductory statistics lab section. I reached out to my undergraduate history advisor, Marynel Ryan Van Zee, and asked for advice about starting to teach. She responded that it was natural to worry teaching, but that I shouldn't worry too much given that I am a white male of average height. 
+A statistics and data science education instills students with an analytical mindset and a valuable set of skills through which they are empowered to effect real change in the world. Personally, my statistical education has empowered me to influence, encourage and mentor the next generation of bright and capable statisticians and data scientists as they begin their professional development. In my education I faced the common struggles inherent to being a student, however I did so from a privileged position. I had opportunities, support and encouragement available to me as a middle-class white male that I understand were neither uniformly, nor equitably afforded to students of under-represented communities. Now, in the influential position as an educator, it is my responsibility to put professional efforts behind a more judicious and equitable extension of opportunities, support and encouragement to empower students of all backgrounds. 
 
-Acknowledge privilage that helped me through my education: white, male, middle-class
+At the most local level, I work to demonstrate to my students that they are all respected as individuals and valued as members of the learning community. This starts with quickly learning their names -- including proper pronunciations, and pronouns -- and using this knowledge to address them as individuals. It is important to then work to develop the personal connection and reinforce that they are valued for the thoughts and skills they being to the classroom. Whether this is through asking for input in a discussion or planning activities that require collaborative work; I am mindful to ensure that the voices, ideas and contributions of traditionally under-represented groups in my classroom are heard, considered and acknowledged. 
 
-Importance of diversity and inclusion in STEM (and specifically Stat and DS)
-
-\href{https://magazine.amstat.org/blog/2018/08/01/2017-degree-report/}{Amstat News Report (2017)}
-
-\href{https://www.aauw.org/research/solving-the-equation/}{AAUW Survey Data (2017)}
-
-\href{https://theindex.generalassemb.ly/data-science-education-lags-behind-in-diversity-ff59ffa718ec}{General Assembly Article (2017)}
-
-Classroom management: Demonstrate that respect and value placed on them as individuals. Disability accomodations. Inclusive activity in pedagogy. 
-
-Recruitment and retention: CIQS, Bridges, STEM conversation series
+Outside the classroom, I volunteer for initiatives on campus that work to recruit and retain under-represented groups in STEM and Data Science. For the past three years I have lead data science experience workshops in the \href{http://miamioh.edu/admission/high-school/bridges/index.html}{Bridges Program} at Miami University. Each year, Bridges hosts several on-campus events to introduce talented high school students from under-represented communities to opportunities at the university; I help to showcase data science. The program has successfully yielded an incredible 97\% application rate from Bridges attendees and 46\% of them have then also enrolled at Miami. I have also volunteer at the annual \href{https://miamioh.edu/cas/academics/departments/statistics/about/events/ciqs-day/}{Careers Involving Quantitative Sciences (CIQS)} Day events that are held on campus during winter term to encourage high school girls to pursue data related careers. Lastly, I have participated in the Students Together Empowering Minorities (STEM) conversation series, where the student group hosts discussions with faculty about opportunities and strategies for success in our disciplines. I will continue to support initiatives for diversity and inclusion in data science and statistics.
 
 
+% About a decade ago, as I prepared myself for my first days in graduate school, I was feeling terribly nervious about my graduate assistantship where I would lead an introductory statistics lab section. I reached out to my undergraduate history advisor, Marynel Ryan Van Zee, and asked for advice about starting to teach. She responded that it was natural to worry teaching, but that I shouldn't worry too much given that I am a white male of average height. 
+% 
 
 \end{document}
