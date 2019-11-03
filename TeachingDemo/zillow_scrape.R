@@ -10,8 +10,7 @@ library(rvest)
 
 #---------------------
 ###
-# source("my_secret_zillow_id.R") # You would need to set up your own account and get an ID
-my_zillow_id <- "X1-ZWz1hde4s3hhcb_4lr3d"
+source("MyZillowSecretKey.R") # You would need to set up your own account and get an ID
 set_zillow_web_service_id(my_zillow_id)
 
 ### Store the information about my house
@@ -91,7 +90,7 @@ all_sold_addresses
 #                       lat=NA, long=NA, zestimate=NA, stringsAsFactors = FALSE)
 # all_sold_full_lists <- list(NULL)
 # remove i=36, 122, 141, 151, 169, 
-for(i in 152:nrow(all_sold)){
+for(i in 170:nrow(all_sold)){
   # look up sold house via address
   sold_house <- GetSearchResults(address = all_sold_addresses[i], citystatezip = 'Oxford, OH')
   # Convert from xml to a nested list of home attributes
