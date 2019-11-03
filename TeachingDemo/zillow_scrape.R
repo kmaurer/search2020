@@ -55,8 +55,7 @@ get_house_df <- function(home_url){
   
   comp_df <- data.frame(key=comp_scrape[var_idx],
                         value=comp_scrape[var_idx+1]) %>%
-    filter(!duplicated(key)) %>%
-    mutate(url=home_url)
+    filter(!duplicated(key)) 
   return(comp_df)
 }
 comp_num=5
@@ -85,12 +84,12 @@ for(page in 1:nrow(sales_pages)){
 all_sold_addresses
 
 
-# Combine into tidy df with one row per house, start to gather info on homes
+### Combine into tidy df with one row per house, start to gather info on homes
 # all_sold <- data.frame(street = all_sold_addresses, url="NA", zpid = "NA",
 #                       lat=NA, long=NA, zestimate=NA, stringsAsFactors = FALSE)
 # all_sold_full_lists <- list(NULL)
-# remove i=36, 122, 141, 151, 169, 
-for(i in 170:nrow(all_sold)){
+# remove i=36, 122, 141, 151, 169, 176, 203, 215, 280, 281, 323, 370, 382, 392, 393
+for(i in 393:nrow(all_sold)){
   # look up sold house via address
   sold_house <- GetSearchResults(address = all_sold_addresses[i], citystatezip = 'Oxford, OH')
   # Convert from xml to a nested list of home attributes
@@ -109,7 +108,26 @@ for(i in 170:nrow(all_sold)){
   }
 }
 
-save(all_sold, all_sold_full_lists, file="sold_homes.Rdata")
+# save(all_sold, all_sold_full_lists, file="sold_homes.Rdata")
+load(file="sold_homes.Rdata")
 
-get_house_df(all_sold$url[1])
+all_sold <- na.omit(all_sold)
+details_tall <- NULL
+for(i in 1:nrow(all_sold)){
+  house_detail <- get_house_df(all_sold$url[i]) 
+  tmp <- house_detail%>%
+    mutate(key = str_trim(str_remove_all(as.character(key), "[:#]")),
+           url = all_sold$url[i]) %>%
+    filter(key %in% c("Baths", "Beds", "Floor size","Parking", 
+                      "Last sale price/sqft","Last sold","Lot")) 
+  details_tall <- rbind(details_tall,tmp)
+  Sys.sleep(runif(1,4,7))
+  print(i)
+}
+
+# save(all_sold, all_sold_full_lists,details_tall, file="sold_homes2.Rdata")
+
+details_wide <- details_tall %>%
+  gather(ke)
+
 
