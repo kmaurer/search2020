@@ -1,0 +1,62 @@
+/*Code adapted from Chocolate and Chocolate-Fonts css files */
+
+
+/*style guide for fonts as per https://miamioh.edu/ucm/miami-brand/typography/index.html*/
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+
+body {  
+  font-family: 'Roboto+Slab';
+}
+h1, h2, h3, h4 { 
+  font-family: 'Roboto+Slab';
+}
+.remark-code, .remark-inline-code { 
+  font-family: 'Roboto+Slab'; 
+}
+
+
+/* add slide background image */
+.remark-slide-content {
+  background-image: url("MiamiSlide.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+/* Title Slide */
+
+.title-slide {
+  background-image: url("MiamiTitle.svg");
+  background-position: center; 
+  background-size: cover;
+}
+
+.title-slide .bg-text{
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  text-align: left;
+  color: #F7F8FA;
+}
+
+.title-slide .remark-slide-number {
+  display: none;
+}
+
+.remark-slide-number {
+  font-size: 10pt;
+  margin-bottom: -11.6px;
+  margin-right:68px;
+}
+
+.remark-slide-content {
+  padding-top: 10px;
+  padding-left: 200px;
+  padding-right: 150px;
+  padding-bottom: 10px;
+}
+
+/* https://stackoverflow.com/questions/31753897/2-column-section-in-r-markdown */
+
+

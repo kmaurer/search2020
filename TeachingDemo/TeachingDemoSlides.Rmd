@@ -1,0 +1,244 @@
+---
+title: "K-Nearest Neighbor Predictive Models"
+author: "Karsten Maurer"
+# institute: "Miami University"
+date: "November 11th, 2019"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    lib_dir: libs
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
+
+```{r xaringan-themer, include = FALSE}
+# devtools::install_github("gadenbuie/xaringanthemer")
+library(xaringanthemer)
+duo_accent(primary_color = "black",secondary_color = "#cc8a00",header_color = "#cc8a00",title_slide_text_color = "#cc8a00")
+```
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(teaTasteR)
+```
+
+
+### Who am I?
+
+```{r, out.width = "320px", echo=FALSE}
+knitr::include_graphics("http://kmaurer.github.io/CV_files/figure-html/unnamed-chunk-1-1.png")
+```
+
+#### Karsten Maurer
+
+- Originally from Champlin, MN
+
+- Went to Minnesota, Morris for BA in history and statistics
+
+- Went to Iowa State for PhD in statistics
+
+--
+
+- Currently an Assistant Professor of Statistics at Miami University
+  
+    + Teaching: Data Visualization, Predictive Modeling, Statistical Programming
+    + Research: Statistics Education, Machine Learning, Visualization, Collaborative Consulting
+
+
+
+---
+### Predictive Modeling Background - Discussion
+
+- What types of predictive models have you encountered in your classes so far?
+
+<br><br><br><br><br><br><br><br><br><br>
+
+--
+
+- What are the two general types of responses that we might try to predict? (Supervised Learning)
+
+
+---
+class: center, middle
+## A **K-Nearest Neighbor model** generates predictions based on the responses of the **K most similar** previously observed instances. 
+
+--
+
+... before getting into any notation, let's build the intuition with an exercise.
+
+---
+
+### Predicting Sleep
+
+You have two tasks:
+
+1. Think back to last night. How many hours of sleep did you get? **This is your response value**
+<br><br>
+
+2. Ask the 3 people sitting closest to you how much sleep they got. **These are your neighbor's responses**
+<br><br><br><br>
+
+--
+
+### Making a prediction about your sleep
+
+Suppose that where you sit in the room (predictor) holds information about how much you sleep (response)
+<br><br>
+
+How could we use your neighbor's sleep values to predict for you?
+
+---
+
+### KNN Regression
+
+If $Y_i \in \mathbb{R}$ is your numeric response for instances $i=1,2,...,n$
+
+and $\bf{X_i} \in \mathbb{R}^p$ is your $p$-dimensional numeric predictors
+<br><br><br>
+
+--
+
+Suppose we have new instance with predictors $\bf{X_0}$ 
+<br><br><br>
+
+--
+
+Define the set of K-Nearest Neighbors based on some distance function $d(.)$ (Typically Euclidean)
+
+$\mathcal{N}_0 = \{i | d({\bf X_i}, {\bf X_0}) \le d({\bf X_{[k]}}, {\bf X_0})\}$
+
+<br><br>
+
+
+--
+
+Prediction is average of K-neighbors:   $\hat{Y}_0 = \frac{1}{K}\sum_{i \in \mathcal{N}_0} Y_i$
+
+---
+
+### KNN Sleep Regression
+
+$Y$  = sleep hours, $X_1$ =Position Left/Right, $X_2$ =Position Front/Back
+<br><br><br>
+
+
+$\bf{X_0}$ is your seat location
+<br><br><br>
+
+$\mathcal{N}_0$  are indices that identify your 3 closest neighbors
+<br><br><br>
+
+Our prediction for you is the average sleep from your 3 closest neighbors
+<br><br><br>
+
+---
+### Survey
+
+- Administration:
+
+  + distributed to students and faculty of Miami University Stat Department
+  + Anonymous drop-box for return
+
+--
+<br>
+
+- Content
+ 
+ + Tea-tasting lineups from 8 different datasets
+ + Each lineup had 8 null plots and 8 target plots
+  
+--
+<br> 
+
+- Randomization: 
+
+  + Datasets uniquely simulated/sampled for each survey
+  + Random order of lineups on survey
+  + Random plot ordering within lineups
+  + Permutation step for each plot construction
+
+--
+<br>
+
+- 45 participants 
+  + 24 Undergrad, 14 Grad, 6 Faculty, 1 Unknown
+  + 41 completed all eight lineups 
+
+---
+class: center, middle
+
+# Conclusions
+
+---
+
+
+### What did we learn? 
+
+1. Does the TT lineup have discriminative power in practice?
+<br><br>
+*Yes*, more correct guesses for data with stronger relationship 
+<br><br>
+
+2. Are correct guess counts hypergeometrically distributed for a true null? 
+<br><br>
+*No*, issues with LOESS tail-instability.
+<br><br>
+Should consider alternative methods for generating target plots
+(wider smoothing span or bootstrapping)
+  
+
+---
+
+### References
+
+#### Literature
+
+- Buja, A., Cook, D., Hofmann, H., Lawrence, M., Lee, E. K., Swayne, D. F., & Wickham, H. (2009). Statistical inference for exploratory data analysis and model diagnostics. Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 367(1906), 4361-4383.
+- Chowdhury, N. R., Cook, D., Hofmann, H., Majumder, M., Lee, E. K., & Toth, A. L. (2015). Using visual statistical inference to better understand random class separations in high dimension, low sample size data. Computational Statistics, 30(2), 293-316.
+- Fisher, R. A. (1960). The design of experiments. The design of experiments., (7th Ed).
+- Hofmann, H., Follett, L., Majumder, M., & Cook, D. (2012). Graphical tests for power comparison of competing designs. IEEE Transactions on Visualization and Computer Graphics, 18(12), 2441-2448.
+- Majumder, M., Hofmann, H., & Cook, D. (2013). Validation of visual statistical inference, applied to linear models. Journal of the American Statistical Association, 108(503), 942-956.
+- VanderPlas, S., & Hofmann, H. (2017). Clusters beat Trend!? Testing feature hierarchy in statistical graphics. Journal of Computational and Graphical Statistics, 26(2), 231-242.
+-Zhao, Y., Cook, D., Hofmann, H., Majumder, M., & Chowdhury, N. R. (2013). Mind Reading: Using an Eye-Tracker to See How People are Looking at Lineups. International Journal of Intelligent Technologies & Applied Statistics, 6(4).
+
+---
+
+### References
+
+#### Software and Data
+
+- Azzalini, A. and Bowman, A. W. (1990). A look at some data on the Old Faithful geyser. Applied Statistics, 39, 357â365. doi: 10.2307/2347385.
+- Genz, Bretz, Miwa, Mi, Leisch, Scheipl, Hothorn (2019). mvtnorm: Multivariate Normal and t Distributions. R package version 1.0-10. URL http://CRAN.R-project.org/package=mvtnorm 
+- R Core Team, 2019. R: A language and environment for statistical computing. 
+- R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+- RStudio Team (2016). RStudio: Integrated Development for R. RStudio,
+  Inc., Boston, MA URL http://www.rstudio.com/.
+- Wickham, 2019. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+- Xie (2019). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package version 1.22.
+---
+
+
+class: center, middle
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
