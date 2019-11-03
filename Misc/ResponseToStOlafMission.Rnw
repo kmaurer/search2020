@@ -1,0 +1,45 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{fullpage}
+\usepackage{graphicx,float,wrapfig,subfig,tabularx,ulem}
+%\usepackage{csquotes}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{etoolbox}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+%opening
+\title{Teaching Philosophy}
+\author{Karsten Maurer}
+\date{}
+
+\begin{document}
+
+
+\onehalfspacing
+
+\begin{center}
+\Large Reflection on St. Olaf College Mission \\
+\normalsize Karsten T. Maurer \\
+\end{center}
+
+\vspace{.1in}
+
+\begin{quote}
+{\it St. Olaf College challenges students to excel in the liberal arts, examine faith and values, and explore meaningful vocation in an inclusive, globally engaged community nourished by Lutheran tradition.}
+\end{quote}
+
+
+
+\end{document}
+
+
+
+
+
+
+

@@ -223,8 +223,6 @@ Anderson J., Burks S., Carpenter J., Goette L., \textbf{Maurer K.}, Nosenzo D., 
 
 \textbf{Maurer K.}, {\it Iterative Quantile Nearest-Neighbors} (Computational Statistics and Data Analysis - {\it in revision})
 
-Swart D.{\bf *}, Hudiburgh L., \textbf{Maurer K.}, Smucker B., {\it Comparing Instructor Created vs. Externally Created Homework Assignments And Their Effects On Exam Scores}  (Statistics Education Research Journal - submitted)
-
 Bennette W., \textbf{Maurer K.}, Sisti S. \textit{Harnessing Adversarial Distances to Uncover Overconfident Unknown Unknowns} (Winter Conference on Applications of Computer Vision -- competitive, blinded peer review process -- {\it submitted}) 
 
 %----------------------------------------------------------------------------------------
@@ -232,6 +230,8 @@ Bennette W., \textbf{Maurer K.}, Sisti S. \textit{Harnessing Adversarial Distanc
 %---------------------------------------------------------------------------------------- 
 
 \section{MANUSCRIPTS IN PREPARATION}
+
+Swart D.{\bf *}, Hudiburgh L., \textbf{Maurer K.}, Smucker B., {\it Comparing Instructor Created vs. Externally Created Homework Assignments And Their Effects On Exam Scores}
 
 Schweitzer B.{\bf *}, Garrett R.{\bf *}, Carter L.{\bf *}, Tuiyott A.{\bf *}, Fisher T., \textbf{Maurer K.}, {\it An Analysis of Rent Control Impact on New York City Housing Quality}. (2$^{nd}$ Place ASA Data Expo Challenge Invited Paper to Computational Statistics)
 
