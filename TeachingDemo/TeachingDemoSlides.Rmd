@@ -12,6 +12,8 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
 ---
 
 <style>
@@ -37,7 +39,9 @@ duo_accent(primary_color = "black",secondary_color = "#cc8a00",header_color = "#
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(tidyverse)
-library(teaTasteR)
+library(mvtnorm)
+library(ggvoronoi)
+library(iqbin)
 ```
 
 
@@ -150,89 +154,172 @@ Our prediction for you is the average sleep from your 3 closest neighbors
 <br><br><br>
 
 ---
-### Survey
 
-- Administration:
+### KNN Algorithm
 
-  + distributed to students and faculty of Miami University Stat Department
-  + Anonymous drop-box for return
+To predict for any new observation $\bf{X_0}$
 
---
-<br>
-
-- Content
- 
- + Tea-tasting lineups from 8 different datasets
- + Each lineup had 8 null plots and 8 target plots
-  
---
-<br> 
-
-- Randomization: 
-
-  + Datasets uniquely simulated/sampled for each survey
-  + Random order of lineups on survey
-  + Random plot ordering within lineups
-  + Permutation step for each plot construction
-
---
-<br>
-
-- 45 participants 
-  + 24 Undergrad, 14 Grad, 6 Faculty, 1 Unknown
-  + 41 completed all eight lineups 
-
----
-class: center, middle
-
-# Conclusions
+1. Compute the distances between $\bf{X_0}$ and all previous observations
+2. Sort distances smallest to largest
+3. Select K smallest, record which observations these belong to
+4. Compute the average response of these observation 
 
 ---
 
+```{r KNN_plot_house,echo=F,include=T,eval=T, fig.align='center'}
+load("~/GitHub/search2020/TeachingDemo/sold_homes2.Rdata")
+head(details_tall)
 
-### What did we learn? 
+oxford_real_estate <- details_tall %>% 
+  unique() %>%
+  spread(key, value) %>%
+  right_join(all_sold, by=c(url="url")) %>%
+  mutate(lot_units = word(Lot, -1),
+         lot_size = ifelse(lot_units=="acres", as.numeric(str_remove(word(Lot,1),","))*43560, as.numeric(str_remove(word(Lot,1),","))),
+         sqft = as.numeric(str_remove(word(`Floor size`,1),",")),
+         sale_price =  as.numeric(gsub('\\$|,', '',word(`Last sold`,-1))),
+         sale_month = word(`Last sold`,1,2)) %>%
+  select(street:sale_month, -lot_units)%>%
+  na.omit() %>%
+  filter(lot_size < 1000000,
+         sale_price < 500000)
 
-1. Does the TT lineup have discriminative power in practice?
-<br><br>
-*Yes*, more correct guesses for data with stronger relationship 
-<br><br>
+mytheme <- theme_bw() + 
+  theme(panel.grid.minor = element_blank(),
+                     panel.border = element_blank())
 
-2. Are correct guess counts hypergeometrically distributed for a true null? 
-<br><br>
-*No*, issues with LOESS tail-instability.
-<br><br>
-Should consider alternative methods for generating target plots
-(wider smoothing span or bootstrapping)
-  
+# plot with X1 breaks
+ggplot()+
+  geom_point(aes(x=sqft,y=lot_size, color=sale_price),
+             data=oxford_real_estate, size=3) +
+  scale_color_viridis_c("Price",
+                        limits = c(0,500000),
+                        breaks = seq(0,500000,by=100000),
+                        labels = paste0("$",seq(0,500,by=100),"k"))+
+  labs(x="Floor Space (sqft)",
+       y="Lot Size (sqft)") +
+  mytheme
+
+```
+
+
+### KNN Algorithm
+
+Start with data with known 
+
+```{r KNN_plot1,echo=F,include=T,eval=T, fig.align='center'}
+set.seed(12345)
+nsim=45
+simbins <- 3
+color_steps <- c(-4,-2,0,2,4)
+mydata <- data.frame(rmvnorm(nsim, mean=c(0,0), sigma=matrix(c(1,.9,.9,1),byrow=TRUE, nrow=2)))
+mydata$Y <- mydata$X1 + mydata$X2 + rnorm(nsim)
+point_color <- "black"
+line_color <- "black"
+mytheme <- theme_bw() + 
+  theme(legend.position = "bottom",panel.grid.minor = element_blank(),
+                     panel.border = element_blank())
+
+# plot with X1 breaks
+ggplot()+
+  geom_point(aes(x=X1,y=X2, color=Y), data=mydata, size=3) +
+  scale_color_gradient2("Y",low="#08519c",mid="gray80",high="#a50f15",
+                        midpoint=0,breaks=color_steps,
+                        limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
+    # scale_color_gradient("Y",low="gray95",high="gray15",
+    #                     breaks=color_steps, 
+    #                     limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
+  labs(x=expression(X[1]),y=expression(X[2]))+
+  mytheme
+
+```
 
 ---
 
-### References
+### KNN Algorithm
 
-#### Literature
+1. Compute the distances between $\bf{X_0}$ and all previous observations
 
-- Buja, A., Cook, D., Hofmann, H., Lawrence, M., Lee, E. K., Swayne, D. F., & Wickham, H. (2009). Statistical inference for exploratory data analysis and model diagnostics. Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 367(1906), 4361-4383.
-- Chowdhury, N. R., Cook, D., Hofmann, H., Majumder, M., Lee, E. K., & Toth, A. L. (2015). Using visual statistical inference to better understand random class separations in high dimension, low sample size data. Computational Statistics, 30(2), 293-316.
-- Fisher, R. A. (1960). The design of experiments. The design of experiments., (7th Ed).
-- Hofmann, H., Follett, L., Majumder, M., & Cook, D. (2012). Graphical tests for power comparison of competing designs. IEEE Transactions on Visualization and Computer Graphics, 18(12), 2441-2448.
-- Majumder, M., Hofmann, H., & Cook, D. (2013). Validation of visual statistical inference, applied to linear models. Journal of the American Statistical Association, 108(503), 942-956.
-- VanderPlas, S., & Hofmann, H. (2017). Clusters beat Trend!? Testing feature hierarchy in statistical graphics. Journal of Computational and Graphical Statistics, 26(2), 231-242.
--Zhao, Y., Cook, D., Hofmann, H., Majumder, M., & Chowdhury, N. R. (2013). Mind Reading: Using an Eye-Tracker to See How People are Looking at Lineups. International Journal of Intelligent Technologies & Applied Statistics, 6(4).
+```{r IQNN_plot1,echo=F,include=T,eval=T,fig.width=3, fig.height=3.5, out.width='.32\\linewidth'}
+set.seed(12345)
+nsim=45
+simbins <- 3
+color_steps <- c(-4,-2,0,2,4)
+mydata <- data.frame(rmvnorm(nsim, mean=c(0,0), sigma=matrix(c(1,.9,.9,1),byrow=TRUE, nrow=2)))
+mydata$Y <- mydata$X1 + mydata$X2 + rnorm(nsim)
+point_color <- "black"
+line_color <- "black"
+mytheme <- theme_bw() + 
+  theme(legend.position = "bottom",panel.grid.minor = element_blank(),
+                     panel.border = element_blank())
+
+mybins <- iqbin(data=mydata, bin_cols=c("X1","X2"),nbins=c(simbins, simbins), output="both")
+X1_bounds <- unique(c(mybins$bin_def$bin_bounds[,1],mybins$bin_def$bin_bounds[,2]))
+
+# plot with X1 breaks
+ggplot()+
+  geom_point(aes(x=X1,y=X2, color=Y), data=mydata, size=3) +
+  geom_vline(xintercept = X1_bounds, size=.6, color=line_color)+
+  scale_color_gradient2("Y",low="#08519c",mid="gray80",high="#a50f15",
+                        midpoint=0,breaks=color_steps,
+                        limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
+    # scale_color_gradient("Y",low="gray95",high="gray15",
+    #                     breaks=color_steps, 
+    #                     limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
+  labs(x=expression(X[1]),y=expression(X[2]))+
+  mytheme
+
+#iqbin_plot_2d(mybins) rework from here to allow closer match in progression of 3 plots
+ggplot()+
+  geom_point(aes(x = X1, y = X2,color=Y), data = mydata, size=3)+  
+  geom_rect(aes(xmin = X1, xmax = X2, ymin = X3, ymax = X4), 
+            data = data.frame(mybins$bin_def$bin_bounds),
+            color =line_color, fill = NA, size=.6) +
+  scale_color_gradient2("Y",low="#08519c",mid="gray80",high="#a50f15",
+                        midpoint=0,breaks=color_steps,
+                        limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
+    # scale_color_gradient("Y",low="gray95",high="gray15",
+    #                     breaks=color_steps, 
+    #                     limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
+  labs(x=expression(X[1]),y=expression(X[2]))+
+  mytheme
+
+# IQNN regression plot
+myiqnn <- iqnn(mydata,y="Y", mod_type = "reg", bin_cols=c("X1","X2"),nbins=c(simbins,simbins))
+ggplot()+
+  geom_rect(aes(xmin = X1, xmax = X2, ymin = X3, ymax = X4, fill=pred), 
+            data = data.frame(mybins$bin_def$bin_bounds,pred=myiqnn$bin_stats$pred),
+            color =line_color, size=.6) +
+  scale_fill_gradient2(expression(hat(Y)),low="#08519c",mid="gray80",high="#a50f15",
+                       midpoint=0,breaks=color_steps,
+                       limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
+  # scale_fill_gradient(expression(hat(Y)),low="gray95",high="gray15",
+  #                       breaks=color_steps, 
+  #                       limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
+  labs(x=expression(X[1]),y=expression(X[2]))+
+  mytheme
+```
+
 
 ---
 
-### References
+### Suggested Supplementary Readings
 
-#### Software and Data
+- James, Witten, Hastie and Tibshirani (2013) Introduction to Statistical Learning. URL <http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf>
+- Grolemund and Wickham (2017) R For Data Science. URL <https://r4ds.had.co.nz/>
+<br><br>
 
-- Azzalini, A. and Bowman, A. W. (1990). A look at some data on the Old Faithful geyser. Applied Statistics, 39, 357â365. doi: 10.2307/2347385.
-- Genz, Bretz, Miwa, Mi, Leisch, Scheipl, Hothorn (2019). mvtnorm: Multivariate Normal and t Distributions. R package version 1.0-10. URL http://CRAN.R-project.org/package=mvtnorm 
+### Software and Data
+
 - R Core Team, 2019. R: A language and environment for statistical computing. 
 - R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 - RStudio Team (2016). RStudio: Integrated Development for R. RStudio,
   Inc., Boston, MA URL http://www.rstudio.com/.
 - Wickham, 2019. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 - Xie (2019). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package version 1.22.
+
+
+
 ---
 
 
