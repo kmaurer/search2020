@@ -10,7 +10,7 @@ library(rvest)
 
 #---------------------
 ###
-source("MyZillowSecretKey.R") # You would need to set up your own account and get an ID
+source("~/Github/search2020/TeachingDemo/MyZillowSecretKey.R") # You would need to set up your own account and get an ID
 set_zillow_web_service_id(my_zillow_id)
 
 ### Store the information about my house
@@ -112,22 +112,39 @@ for(i in 393:nrow(all_sold)){
 load(file="sold_homes.Rdata")
 
 all_sold <- na.omit(all_sold)
-details_tall <- NULL
+details_tall_all <- NULL
 for(i in 1:nrow(all_sold)){
   house_detail <- get_house_df(all_sold$url[i]) 
   tmp <- house_detail%>%
     mutate(key = str_trim(str_remove_all(as.character(key), "[:#]")),
-           url = all_sold$url[i]) %>%
-    filter(key %in% c("Baths", "Beds", "Floor size","Parking", 
-                      "Last sale price/sqft","Last sold","Lot")) 
-  details_tall <- rbind(details_tall,tmp)
+           url = all_sold$url[i])
+  details_tall_all <- rbind(details_tall_all,tmp)
   Sys.sleep(runif(1,4,7))
   print(i)
 }
 
-# save(all_sold, all_sold_full_lists,details_tall, file="sold_homes2.Rdata")
+details_tall <- details_tall_all %>%
+  filter(key %in% c("Baths", "Beds", "Floor size","Parking", 
+                    "Last sale price/sqft","Last sold","Lot")) 
 
-details_wide <- details_tall %>%
-  gather(ke)
+
+oxford_real_estate <- details_tall %>% 
+  unique() %>%
+  spread(key, value) %>%
+  right_join(all_sold, by=c(url="url")) %>%
+  mutate(lot_units = word(Lot, -1),
+         lot_size = ifelse(lot_units=="acres",
+                           as.numeric(str_remove(word(Lot,1),","))*43560, 
+                           as.numeric(str_remove(word(Lot,1),","))),
+         sqft = as.numeric(str_remove(word(`Floor size`,1),",")),
+         sale_price =  as.numeric(gsub('\\$|,', '',word(`Last sold`,-1))),
+         sale_month = word(`Last sold`,1,2)) %>%
+  select(street:sale_month, -lot_units)%>%
+  na.omit() %>%
+  filter(lot_size < 1000000,
+         sale_price < 400000)
+
+# save(all_sold, all_sold_full_lists,details_tall,details_tall_all file="sold_homes2.Rdata")
+
 
 

@@ -32,7 +32,8 @@ editor_options:
 ```{r xaringan-themer, include = FALSE}
 # devtools::install_github("gadenbuie/xaringanthemer")
 library(xaringanthemer)
-duo_accent(primary_color = "black",secondary_color = "#cc8a00",header_color = "#cc8a00",title_slide_text_color = "#cc8a00")
+SO_gold = "#cc8a00"
+duo_accent(primary_color = "black",secondary_color = SO_gold,header_color = SO_gold,title_slide_text_color = SO_gold)
 ```
 
 
@@ -42,6 +43,8 @@ library(tidyverse)
 library(mvtnorm)
 library(ggvoronoi)
 library(iqbin)
+library(gganimate)
+
 ```
 
 
@@ -166,139 +169,239 @@ To predict for any new observation $\bf{X_0}$
 
 ---
 
+### Case Study: Real Estate
+
 ```{r KNN_plot_house,echo=F,include=T,eval=T, fig.align='center'}
 load("~/GitHub/search2020/TeachingDemo/sold_homes2.Rdata")
-head(details_tall)
 
 oxford_real_estate <- details_tall %>% 
   unique() %>%
   spread(key, value) %>%
   right_join(all_sold, by=c(url="url")) %>%
   mutate(lot_units = word(Lot, -1),
-         lot_size = ifelse(lot_units=="acres", as.numeric(str_remove(word(Lot,1),","))*43560, as.numeric(str_remove(word(Lot,1),","))),
+         lot_size = ifelse(lot_units=="acres",
+                           as.numeric(str_remove(word(Lot,1),","))*43560, 
+                           as.numeric(str_remove(word(Lot,1),","))),
          sqft = as.numeric(str_remove(word(`Floor size`,1),",")),
          sale_price =  as.numeric(gsub('\\$|,', '',word(`Last sold`,-1))),
          sale_month = word(`Last sold`,1,2)) %>%
   select(street:sale_month, -lot_units)%>%
   na.omit() %>%
-  filter(lot_size < 1000000,
-         sale_price < 500000)
+  filter(lot_size < 87120,
+         sale_price < 400000)
 
 mytheme <- theme_bw() + 
   theme(panel.grid.minor = element_blank(),
-                     panel.border = element_blank())
+        panel.border = element_blank(),
+        plot.title = element_text(face="bold"),
+        plot.subtitle = element_text(face="bold", color=SO_gold))
 
-# plot with X1 breaks
-ggplot()+
+
+p1 <- ggplot()+
   geom_point(aes(x=sqft,y=lot_size, color=sale_price),
-             data=oxford_real_estate, size=3) +
+             data=oxford_real_estate, size=2) +
   scale_color_viridis_c("Price",
-                        limits = c(0,500000),
-                        breaks = seq(0,500000,by=100000),
-                        labels = paste0("$",seq(0,500,by=100),"k"))+
-  labs(x="Floor Space (sqft)",
-       y="Lot Size (sqft)") +
+                        limits = c(0,400000),
+                        breaks = seq(0,400000,by=100000),
+                        labels = paste0("$",seq(0,400,by=100),"k"))+
+  labs(x=expression(paste("Floor Space (",ft^2,")")),
+       y=expression(paste("Lot Size (",ft^2,")")),
+       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+       subtitle="Homes Under $400k and Under 2 Acre Lotsize") +
   mytheme
+ggsave(file="OxfordHouses.png",dpi=600,
+       width=10, height=5,units="in")
 
-```
-
-
-### KNN Algorithm
-
-Start with data with known 
-
-```{r KNN_plot1,echo=F,include=T,eval=T, fig.align='center'}
-set.seed(12345)
-nsim=45
-simbins <- 3
-color_steps <- c(-4,-2,0,2,4)
-mydata <- data.frame(rmvnorm(nsim, mean=c(0,0), sigma=matrix(c(1,.9,.9,1),byrow=TRUE, nrow=2)))
-mydata$Y <- mydata$X1 + mydata$X2 + rnorm(nsim)
-point_color <- "black"
-line_color <- "black"
-mytheme <- theme_bw() + 
-  theme(legend.position = "bottom",panel.grid.minor = element_blank(),
-                     panel.border = element_blank())
-
-# plot with X1 breaks
-ggplot()+
-  geom_point(aes(x=X1,y=X2, color=Y), data=mydata, size=3) +
-  scale_color_gradient2("Y",low="#08519c",mid="gray80",high="#a50f15",
-                        midpoint=0,breaks=color_steps,
-                        limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
-    # scale_color_gradient("Y",low="gray95",high="gray15",
-    #                     breaks=color_steps, 
-    #                     limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
-  labs(x=expression(X[1]),y=expression(X[2]))+
-  mytheme
+knitr::include_graphics("OxfordHouses.png")
 
 ```
 
 ---
 
-### KNN Algorithm
+### Case Study: Real Estate
 
-1. Compute the distances between $\bf{X_0}$ and all previous observations
+```{r KNN_plot_house_me,echo=F,include=T,eval=T, fig.align='center'}
+my_house <- data.frame(sqft = 1300, lot_size=17000, zestimate=161000)
 
-```{r IQNN_plot1,echo=F,include=T,eval=T,fig.width=3, fig.height=3.5, out.width='.32\\linewidth'}
-set.seed(12345)
-nsim=45
-simbins <- 3
-color_steps <- c(-4,-2,0,2,4)
-mydata <- data.frame(rmvnorm(nsim, mean=c(0,0), sigma=matrix(c(1,.9,.9,1),byrow=TRUE, nrow=2)))
-mydata$Y <- mydata$X1 + mydata$X2 + rnorm(nsim)
-point_color <- "black"
-line_color <- "black"
-mytheme <- theme_bw() + 
-  theme(legend.position = "bottom",panel.grid.minor = element_blank(),
-                     panel.border = element_blank())
-
-mybins <- iqbin(data=mydata, bin_cols=c("X1","X2"),nbins=c(simbins, simbins), output="both")
-X1_bounds <- unique(c(mybins$bin_def$bin_bounds[,1],mybins$bin_def$bin_bounds[,2]))
-
-# plot with X1 breaks
-ggplot()+
-  geom_point(aes(x=X1,y=X2, color=Y), data=mydata, size=3) +
-  geom_vline(xintercept = X1_bounds, size=.6, color=line_color)+
-  scale_color_gradient2("Y",low="#08519c",mid="gray80",high="#a50f15",
-                        midpoint=0,breaks=color_steps,
-                        limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
-    # scale_color_gradient("Y",low="gray95",high="gray15",
-    #                     breaks=color_steps, 
-    #                     limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
-  labs(x=expression(X[1]),y=expression(X[2]))+
+p2 <- ggplot()+
+  geom_point(aes(x=sqft,y=lot_size, color=sale_price),
+             data=oxford_real_estate, size=2) +
+  geom_point(aes(x=sqft,y=lot_size),shape=18, color="red",size=5,data=my_house)+
+  scale_color_viridis_c("Price",
+                        limits = c(0,400000),
+                        breaks = seq(0,400000,by=100000),
+                        labels = paste0("$",seq(0,400,by=100),"k"))+
+  labs(x=expression(paste("Floor Space (",ft^2,")")),
+       y=expression(paste("Lot Size (",ft^2,")")),
+       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+       subtitle="Where is my house?") +
   mytheme
+ggsave(file="OxfordHousesPlusMe.png",dpi=600,
+       width=10, height=5,units="in")
 
-#iqbin_plot_2d(mybins) rework from here to allow closer match in progression of 3 plots
-ggplot()+
-  geom_point(aes(x = X1, y = X2,color=Y), data = mydata, size=3)+  
-  geom_rect(aes(xmin = X1, xmax = X2, ymin = X3, ymax = X4), 
-            data = data.frame(mybins$bin_def$bin_bounds),
-            color =line_color, fill = NA, size=.6) +
-  scale_color_gradient2("Y",low="#08519c",mid="gray80",high="#a50f15",
-                        midpoint=0,breaks=color_steps,
-                        limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
-    # scale_color_gradient("Y",low="gray95",high="gray15",
-    #                     breaks=color_steps, 
-    #                     limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
-  labs(x=expression(X[1]),y=expression(X[2]))+
-  mytheme
+knitr::include_graphics("OxfordHousesPlusMe.png")
 
-# IQNN regression plot
-myiqnn <- iqnn(mydata,y="Y", mod_type = "reg", bin_cols=c("X1","X2"),nbins=c(simbins,simbins))
-ggplot()+
-  geom_rect(aes(xmin = X1, xmax = X2, ymin = X3, ymax = X4, fill=pred), 
-            data = data.frame(mybins$bin_def$bin_bounds,pred=myiqnn$bin_stats$pred),
-            color =line_color, size=.6) +
-  scale_fill_gradient2(expression(hat(Y)),low="#08519c",mid="gray80",high="#a50f15",
-                       midpoint=0,breaks=color_steps,
-                       limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
-  # scale_fill_gradient(expression(hat(Y)),low="gray95",high="gray15",
-  #                       breaks=color_steps, 
-  #                       limits=c(-max(abs(mydata$Y)),max(abs(mydata$Y))))+
-  labs(x=expression(X[1]),y=expression(X[2]))+
-  mytheme
 ```
+
+
+---
+
+### Case Study: Real Estate
+
+```{r KNN_dist_from_me_standarized,echo=F,include=T,eval=T, fig.align='center'}
+oxford_real_estate$std_sqft <- scale(oxford_real_estate$sqft)
+oxford_real_estate$std_lot <- scale(oxford_real_estate$lot_size)
+
+sqft_mean = attributes(oxford_real_estate$std_sqft)[2][[1]]
+sqft_sd = attributes(oxford_real_estate$std_sqft)[3][[1]]
+lot_mean = attributes(oxford_real_estate$std_lot)[2][[1]]
+lot_sd = attributes(oxford_real_estate$std_lot)[3][[1]]
+
+my_house_std <- data.frame(sqft = (1300-sqft_mean)/sqft_sd,
+                           lot_size=(17000-lot_mean)/lot_sd,
+                           zestimate=161000)
+
+p3 <- ggplot()+
+  geom_point(aes(x=std_sqft,y=std_lot, color=sale_price),size=2,
+             data=oxford_real_estate) +
+  geom_point(aes(x=sqft,y=lot_size),shape=18, color="red",size=5,data=my_house_std)+
+  scale_color_viridis_c("Price",
+                        limits = c(0,400000),
+                        breaks = seq(0,400000,by=100000),
+                        labels = paste0("$",seq(0,400,by=100),"k"))+
+  labs(x="Standardized Floor Space",
+       y="Standardized Lot Size",
+       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+       subtitle=expression(paste("Standardized units for ",X[1]," and ", X[2])),
+       parse=T) +
+  mytheme
+
+ggsave(file="OxfordHousesPlusMe_standardized.png",dpi=600,
+       width=10, height=5,units="in")
+knitr::include_graphics("OxfordHousesPlusMe_standardized.png")
+
+```
+
+---
+
+### Case Study: Real Estate
+
+```{r KNN_dist_from_me,echo=F,include=T,eval=T, fig.align='center'}
+
+oxford_real_estate$std_sqft <- scale(oxford_real_estate$sqft)
+oxford_real_estate$std_lot <- scale(oxford_real_estate$lot_size)
+
+sqft_mean = attributes(oxford_real_estate$std_sqft)[2][[1]]
+sqft_sd = attributes(oxford_real_estate$std_sqft)[3][[1]]
+lot_mean = attributes(oxford_real_estate$std_lot)[2][[1]]
+lot_sd = attributes(oxford_real_estate$std_lot)[3][[1]]
+
+my_house_std <- data.frame(sqft = (1300-sqft_mean)/sqft_sd,
+                           lot_size=(17000-lot_mean)/lot_sd,
+                           zestimate=161000)
+
+p4 <- ggplot()+
+  geom_segment(aes(x=my_house_std$sqft,y=my_house_std$lot_size,
+                   xend=std_sqft,yend=std_lot, color=sale_price),
+                size=1,
+             data=oxford_real_estate) +
+  geom_point(aes(x=sqft,y=lot_size),shape=18, color="red",size=5,data=my_house_std)+
+  scale_color_viridis_c("Price",
+                        limits = c(0,400000),
+                        breaks = seq(0,400000,by=100000),
+                        labels = paste0("$",seq(0,400,by=100),"k"))+
+  labs(x="Standardized Floor Space",
+       y="Standardized Lot Size",
+       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+       subtitle="How far are they all from my house?") +
+  mytheme
+ggsave(file="OxfordHousesDistFromMe.png",dpi=600,
+       width=10, height=5,units="in")
+
+knitr::include_graphics("OxfordHousesDistFromMe.png")
+
+```
+
+---
+
+### Case Study: Real Estate
+
+```{r KNN_dist_from_me_rearranged,echo=F,include=T,eval=T, fig.align='center', echo=FALSE}
+oxford_real_estate$std_sqft <- scale(oxford_real_estate$sqft)
+oxford_real_estate$std_lot <- scale(oxford_real_estate$lot_size)
+
+# Making transition sorting animation: start with points at location from last slide
+Original <- oxford_real_estate %>%
+  mutate(x=my_house_std$sqft,
+         y=my_house_std$lot_size,
+         xend=std_sqft,
+         yend=std_lot,
+         type="Original") %>%
+  select(x,xend,y,yend,sale_price,type)
+
+# distance calculation function
+mydistance <- function(x11,x12,x21,x22){
+  sqrt((x11-x21)^2 + (x12-x22)^2)  
+}
+# apply distance function to find order of nearest neighbors 
+distfromme <- mydistance(x11=oxford_real_estate$std_sqft,
+                        x12=oxford_real_estate$std_lot,
+                        x21=my_house_std$sqft,
+                        x22=my_house_std$lot)
+
+# apply uniform transformation to keep window same after x changes to order stat
+uniminmax_house <- function(x){
+  (x-min(x))/diff(range(x))*diff(range(oxford_real_estate$std_sqft)) +
+    min(oxford_real_estate$std_sqft)
+}
+# Rearranged with vertical lines in order from nearest to farthest neighbor, 
+# keep order in data same as original so that animation transition is smooth
+rearranged <- data.frame(x=NA,
+                         xend=NA,
+                         y=0+min(oxford_real_estate$std_lot),
+                         yend=distfromme+min(oxford_real_estate$std_lot),
+                         sale_price=oxford_real_estate$sale_price,
+                         type="Rearranged")
+rearranged$x[order(distfromme,decreasing=FALSE)] <- uniminmax_house(1:nrow(rearranged))
+rearranged$xend[order(distfromme,decreasing=FALSE)] <-  uniminmax_house(1:nrow(rearranged))
+
+#combined start and end position of lines
+transition_plot_data <- rbind(Original,rearranged)
+
+# Label Data - Add if time permits
+
+# build plots and animate
+p5 <- ggplot()+
+  geom_segment(aes(x=x, y=y, xend=xend, yend=yend, color=sale_price),
+                size=1,
+             data=transition_plot_data)+
+  scale_color_viridis_c("Price",
+                        limits = c(0,400000),
+                        breaks = seq(0,400000,by=100000),
+                        labels = paste0("$",seq(0,400,by=100),"k"))+
+  labs(x="",
+       y="",
+       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+       subtitle="Order neighbors based on closest distances") +
+  mytheme +
+  theme(axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        panel.grid = element_blank())
+
+# options(gganimate.dev_args = list(width = 1200, height = 600))
+# animation::ani.options(ani.width= 2000, ani.height=1000, ani.res = 600)
+# anim <- animate( p5 +
+#   transition_states(type,
+#                     transition_length = 2,
+#                     state_length = 1))
+# 
+# anim
+# anim_save("SortingNeighbors.gif", anim)
+```
+
+
+![](SortingNeighbors.gif)
+
 
 
 ---
