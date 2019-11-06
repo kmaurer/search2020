@@ -166,6 +166,11 @@ To predict for any new observation $\bf{X_0}$
 2. Sort distances smallest to largest
 3. Select K smallest, record which observations these belong to
 4. Compute the average response of these observation 
+---
+
+### Case Study: Real Estate
+
+Motivation: 
 
 ---
 
@@ -197,20 +202,20 @@ mytheme <- theme_bw() +
         plot.subtitle = element_text(face="bold", color=SO_gold))
 
 
-p1 <- ggplot()+
-  geom_point(aes(x=sqft,y=lot_size, color=sale_price),
-             data=oxford_real_estate, size=2) +
-  scale_color_viridis_c("Price",
-                        limits = c(0,400000),
-                        breaks = seq(0,400000,by=100000),
-                        labels = paste0("$",seq(0,400,by=100),"k"))+
-  labs(x=expression(paste("Floor Space (",ft^2,")")),
-       y=expression(paste("Lot Size (",ft^2,")")),
-       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
-       subtitle="Homes Under $400k and Under 2 Acre Lotsize") +
-  mytheme
-ggsave(file="OxfordHouses.png",dpi=600,
-       width=10, height=5,units="in")
+# p1 <- ggplot()+
+#   geom_point(aes(x=sqft,y=lot_size, color=sale_price),
+#              data=oxford_real_estate, size=2) +
+#   scale_color_viridis_c("Price",
+#                         limits = c(0,400000),
+#                         breaks = seq(0,400000,by=100000),
+#                         labels = paste0("$",seq(0,400,by=100),"k"))+
+#   labs(x=expression(paste("Floor Space (",ft^2,")")),
+#        y=expression(paste("Lot Size (",ft^2,")")),
+#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+#        subtitle="Homes Under $400k and Under 2 Acre Lotsize") +
+#   mytheme
+# ggsave(file="OxfordHouses.png",dpi=600,
+#        width=10, height=5,units="in")
 
 knitr::include_graphics("OxfordHouses.png")
 
@@ -223,21 +228,23 @@ knitr::include_graphics("OxfordHouses.png")
 ```{r KNN_plot_house_me,echo=F,include=T,eval=T, fig.align='center'}
 my_house <- data.frame(sqft = 1300, lot_size=17000, zestimate=161000)
 
-p2 <- ggplot()+
-  geom_point(aes(x=sqft,y=lot_size, color=sale_price),
-             data=oxford_real_estate, size=2) +
-  geom_point(aes(x=sqft,y=lot_size),shape=18, color="red",size=5,data=my_house)+
-  scale_color_viridis_c("Price",
-                        limits = c(0,400000),
-                        breaks = seq(0,400000,by=100000),
-                        labels = paste0("$",seq(0,400,by=100),"k"))+
-  labs(x=expression(paste("Floor Space (",ft^2,")")),
-       y=expression(paste("Lot Size (",ft^2,")")),
-       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
-       subtitle="Where is my house?") +
-  mytheme
-ggsave(file="OxfordHousesPlusMe.png",dpi=600,
-       width=10, height=5,units="in")
+# p2 <- ggplot()+
+#   geom_point(aes(x=sqft,y=lot_size, color=sale_price),
+#              data=oxford_real_estate, size=2) +
+#   geom_point(aes(x=sqft,y=lot_size),shape=18, color="red",size=5,data=my_house)+
+#   geom_text(aes(x=sqft,y=lot_size),hjust=1.1,vjust=0.5,angle=-45,
+#             label="My House",color="red",size=5,data=my_house)+
+#   scale_color_viridis_c("Price",
+#                         limits = c(0,400000),
+#                         breaks = seq(0,400000,by=100000),
+#                         labels = paste0("$",seq(0,400,by=100),"k"))+
+#   labs(x=expression(paste("Floor Space (",ft^2,")")),
+#        y=expression(paste("Lot Size (",ft^2,")")),
+#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+#        subtitle="Where is my house?") +
+#   mytheme
+# ggsave(file="OxfordHousesPlusMe.png",dpi=600,
+#        width=10, height=5,units="in")
 
 knitr::include_graphics("OxfordHousesPlusMe.png")
 
@@ -261,23 +268,23 @@ my_house_std <- data.frame(sqft = (1300-sqft_mean)/sqft_sd,
                            lot_size=(17000-lot_mean)/lot_sd,
                            zestimate=161000)
 
-p3 <- ggplot()+
-  geom_point(aes(x=std_sqft,y=std_lot, color=sale_price),size=2,
-             data=oxford_real_estate) +
-  geom_point(aes(x=sqft,y=lot_size),shape=18, color="red",size=5,data=my_house_std)+
-  scale_color_viridis_c("Price",
-                        limits = c(0,400000),
-                        breaks = seq(0,400000,by=100000),
-                        labels = paste0("$",seq(0,400,by=100),"k"))+
-  labs(x="Standardized Floor Space",
-       y="Standardized Lot Size",
-       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
-       subtitle=expression(paste("Standardized units for ",X[1]," and ", X[2])),
-       parse=T) +
-  mytheme
-
-ggsave(file="OxfordHousesPlusMe_standardized.png",dpi=600,
-       width=10, height=5,units="in")
+# p3 <- ggplot()+
+#   geom_point(aes(x=std_sqft,y=std_lot, color=sale_price),size=2,
+#              data=oxford_real_estate) +
+#   geom_point(aes(x=sqft,y=lot_size),shape=18, color="red",size=5,data=my_house_std)+
+#   scale_color_viridis_c("Price",
+#                         limits = c(0,400000),
+#                         breaks = seq(0,400000,by=100000),
+#                         labels = paste0("$",seq(0,400,by=100),"k"))+
+#   labs(x="Standardized Floor Space",
+#        y="Standardized Lot Size",
+#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+#        subtitle=expression(paste("Standardized units for ",X[1]," and ", X[2])),
+#        parse=T) +
+#   mytheme
+# 
+# ggsave(file="OxfordHousesPlusMe_standardized.png",dpi=600,
+#        width=10, height=5,units="in")
 knitr::include_graphics("OxfordHousesPlusMe_standardized.png")
 
 ```
@@ -300,23 +307,23 @@ my_house_std <- data.frame(sqft = (1300-sqft_mean)/sqft_sd,
                            lot_size=(17000-lot_mean)/lot_sd,
                            zestimate=161000)
 
-p4 <- ggplot()+
-  geom_segment(aes(x=my_house_std$sqft,y=my_house_std$lot_size,
-                   xend=std_sqft,yend=std_lot, color=sale_price),
-                size=1,
-             data=oxford_real_estate) +
-  geom_point(aes(x=sqft,y=lot_size),shape=18, color="red",size=5,data=my_house_std)+
-  scale_color_viridis_c("Price",
-                        limits = c(0,400000),
-                        breaks = seq(0,400000,by=100000),
-                        labels = paste0("$",seq(0,400,by=100),"k"))+
-  labs(x="Standardized Floor Space",
-       y="Standardized Lot Size",
-       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
-       subtitle="How far are they all from my house?") +
-  mytheme
-ggsave(file="OxfordHousesDistFromMe.png",dpi=600,
-       width=10, height=5,units="in")
+# p4 <- ggplot()+
+#   geom_segment(aes(x=my_house_std$sqft,y=my_house_std$lot_size,
+#                    xend=std_sqft,yend=std_lot, color=sale_price),
+#                 size=1,
+#              data=oxford_real_estate) +
+#   geom_point(aes(x=sqft,y=lot_size),shape=18, color="red",size=5,data=my_house_std)+
+#   scale_color_viridis_c("Price",
+#                         limits = c(0,400000),
+#                         breaks = seq(0,400000,by=100000),
+#                         labels = paste0("$",seq(0,400,by=100),"k"))+
+  # labs(x="Standardized Floor Space",
+  #      y="Standardized Lot Size",
+#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+#        subtitle="How far are they all from my house?") +
+#   mytheme
+# ggsave(file="OxfordHousesDistFromMe.png",dpi=600,
+#        width=10, height=5,units="in")
 
 knitr::include_graphics("OxfordHousesDistFromMe.png")
 
@@ -370,23 +377,23 @@ transition_plot_data <- rbind(Original,rearranged)
 
 # Label Data - Add if time permits
 
-# build plots and animate
-p5 <- ggplot()+
-  geom_segment(aes(x=x, y=y, xend=xend, yend=yend, color=sale_price),
-                size=1,
-             data=transition_plot_data)+
-  scale_color_viridis_c("Price",
-                        limits = c(0,400000),
-                        breaks = seq(0,400000,by=100000),
-                        labels = paste0("$",seq(0,400,by=100),"k"))+
-  labs(x="",
-       y="",
-       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
-       subtitle="Order neighbors based on closest distances") +
-  mytheme +
-  theme(axis.ticks = element_blank(),
-        axis.text = element_blank(),
-        panel.grid = element_blank())
+# # build plots and animate
+# p5 <- ggplot()+
+#   geom_segment(aes(x=x, y=y, xend=xend, yend=yend, color=sale_price),
+#                 size=1,
+#              data=transition_plot_data)+
+#   scale_color_viridis_c("Price",
+#                         limits = c(0,400000),
+#                         breaks = seq(0,400000,by=100000),
+#                         labels = paste0("$",seq(0,400,by=100),"k"))+
+#   labs(x="",
+#        y="",
+#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+#        subtitle="Order neighbors based on closest distances") +
+#   mytheme +
+#   theme(axis.ticks = element_blank(),
+#         axis.text = element_blank(),
+#         panel.grid = element_blank())
 
 # options(gganimate.dev_args = list(width = 1200, height = 600))
 # animation::ani.options(ani.width= 2000, ani.height=1000, ani.res = 600)
@@ -401,6 +408,209 @@ p5 <- ggplot()+
 
 
 ![](SortingNeighbors.gif)
+
+---
+
+### Case Study: Real Estate
+
+```{r KNN_dist_from_me_rearranged_static,echo=F,include=T,eval=T, fig.align='center', echo=FALSE}
+
+# p6 <- ggplot()+
+#   geom_segment(aes(x=x, xend=xend, y=y-min(oxford_real_estate$std_lot),
+#                    yend=yend-min(oxford_real_estate$std_lot), color=sale_price),
+#                 size=1,
+#              data=dplyr::filter(transition_plot_data, type=="Rearranged"))+
+#   scale_color_viridis_c("Price",
+#                         limits = c(0,400000),
+#                         breaks = seq(0,400000,by=100000),
+#                         labels = paste0("$",seq(0,400,by=100),"k"))+
+#   scale_y_continuous(breaks=0:5)+
+#   labs(x="Ordered Neighbors",
+#        y="Standardized Distance",
+#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+#        subtitle="Order neighbors based on closest distances") +
+#   mytheme +
+#   theme(axis.ticks.x = element_blank(),
+#         axis.text.x = element_blank(),
+#         panel.grid.major.x = element_blank(),
+#         panel.grid.minor.x = element_blank())
+# 
+# ggsave(file="OxfordHousesDistFromMeArranged.png",dpi=600,
+#        width=10, height=5,units="in")
+
+knitr::include_graphics("OxfordHousesDistFromMeArranged.png")
+```
+
+---
+
+### Case Study: Real Estate
+
+```{r one_nn,echo=F,include=T,eval=T, fig.align='center', echo=FALSE}
+k=1
+nn_idx <- order(distfromme,decreasing=FALSE)[1:k]
+# 
+# p7 <- ggplot()+
+#   geom_segment(aes(x=x, xend=xend, y=y-min(oxford_real_estate$std_lot),
+#                    yend=yend-min(oxford_real_estate$std_lot), color=sale_price),
+#                 size=1,
+#              data=dplyr::filter(transition_plot_data, type=="Rearranged"))+
+#   annotate(geom="segment",x=rearranged[nn_idx,]$x , xend=rearranged[nn_idx,]$x,
+#            y=.8, yend =.005, arrow=arrow(length=unit(0.2,"cm")))+
+#   annotate(geom="text",x=rearranged[nn_idx,]$x ,
+#            y=.8,label="Nearest Neighbor \n Price = $155000", vjust=-.1, hjust=.2)+
+#   scale_color_viridis_c("Price",
+#                         limits = c(0,400000),
+#                         breaks = seq(0,400000,by=100000),
+#                         labels = paste0("$",seq(0,400,by=100),"k"))+
+#   scale_y_continuous(breaks=0:5)+
+#   labs(x="Ordered Neighbors",
+#        y="Standardized Distance",
+#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+#        subtitle="Order neighbors based on closest distances") +
+#   mytheme +
+#   theme(axis.ticks.x = element_blank(),
+#         axis.text.x = element_blank(),
+#         panel.grid.major.x = element_blank(),
+#         panel.grid.minor.x = element_blank())
+# 
+# ggsave(file="nearestNeighbor.png",dpi=600,
+#        width=10, height=5,units="in")
+
+knitr::include_graphics("nearestNeighbor.png")
+```
+
+---
+
+### Case Study: Real Estate
+
+```{r ten_NN,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, warning=F}
+k=10
+nn_idx <- order(distfromme,decreasing=FALSE)[1:k]
+# figure out stepsize in ordering position
+stepsize <- diff(rearranged[nn_idx,]$x[1:2])
+
+# mean(rearranged[nn_idx,]$sale_price)
+
+# p8 <- ggplot()+
+#   geom_vline(xintercept = rearranged[nn_idx,]$x[k]+.5*stepsize,
+#              color=SO_gold)+
+#   annotate(geom="text",x=rearranged[nn_idx,]$x[k]+.5*stepsize,
+#            y=2.8,label="10-Nearest Neighborhood Cutoff", angle=90, vjust=1.1, 
+#            color=SO_gold)+
+#   annotate(geom="text",x=rearranged[nn_idx,]$x[1],
+#            y=0.75,label=expression(paste(hat(y), " = $154150")),
+#            angle=15, vjust=1)+
+#   geom_segment(aes(x=x, xend=xend, y=y-min(oxford_real_estate$std_lot),
+#                    yend=yend-min(oxford_real_estate$std_lot), color=sale_price),
+#                 size=1,
+#              data=dplyr::filter(transition_plot_data, type=="Rearranged"))+
+#   scale_color_viridis_c("Price",
+#                         limits = c(0,400000),
+#                         breaks = seq(0,400000,by=100000),
+#                         labels = paste0("$",seq(0,400,by=100),"k"))+
+#   scale_y_continuous(breaks=0:5)+
+#   labs(x="Ordered Neighbors",
+#        y="Standardized Distance",
+#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+#        subtitle="10-Nearest Neighbors Predicted Price") +
+#   mytheme +
+#   theme(axis.ticks.x = element_blank(),
+#         axis.text.x = element_blank(),
+#         panel.grid.major.x = element_blank(),
+#         panel.grid.minor.x = element_blank())
+# 
+# ggsave(file="OxfordHousesDistFromMeArranged_10nn.png",dpi=600,
+#        width=10, height=5,units="in")
+
+knitr::include_graphics("OxfordHousesDistFromMeArranged_10nn.png")
+```
+
+---
+
+### Case Study: Real Estate
+
+```{r twentyfive_NN,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, warning=F}
+k=25
+nn_idx <- order(distfromme,decreasing=FALSE)[1:k]
+# figure out stepsize in ordering position
+stepsize <- diff(rearranged[nn_idx,]$x[1:2])
+
+# mean(rearranged[nn_idx,]$sale_price)
+# 
+# p9 <- ggplot()+
+#   geom_vline(xintercept = rearranged[nn_idx,]$x[k]+.5*stepsize,
+#              color=SO_gold)+
+#   annotate(geom="text",x=rearranged[nn_idx,]$x[k]+.5*stepsize,
+#            y=2.8,label="25-Nearest Neighborhood Cutoff", angle=90, vjust=1.1, 
+#            color=SO_gold)+
+#   annotate(geom="text",x=mean(rearranged[nn_idx,]$x),
+#            y=0.75,label=expression(paste(hat(y), " = $153296")),
+#            angle=15, vjust=1)+
+#   geom_segment(aes(x=x, xend=xend, y=y-min(oxford_real_estate$std_lot),
+#                    yend=yend-min(oxford_real_estate$std_lot), color=sale_price),
+#                 size=1,
+#              data=dplyr::filter(transition_plot_data, type=="Rearranged"))+
+#   scale_color_viridis_c("Price",
+#                         limits = c(0,400000),
+#                         breaks = seq(0,400000,by=100000),
+#                         labels = paste0("$",seq(0,400,by=100),"k"))+
+#   scale_y_continuous(breaks=0:5)+
+#   labs(x="Ordered Neighbors",
+#        y="Standardized Distance",
+#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+#        subtitle="25-Nearest Neighbors Predicted Price") +
+#   mytheme +
+#   theme(axis.ticks.x = element_blank(),
+#         axis.text.x = element_blank(),
+#         panel.grid.major.x = element_blank(),
+#         panel.grid.minor.x = element_blank())
+# 
+# ggsave(file="OxfordHousesDistFromMeArranged_25nn.png",dpi=600,
+#        width=10, height=5,units="in")
+
+knitr::include_graphics("OxfordHousesDistFromMeArranged_25nn.png")
+```
+
+
+---
+
+class: center, middle
+## A **K-Nearest Neighbor model** generates predictions based on the responses of the **K most similar** previously observed instances. 
+
+--
+
+So what does this prediction  function look like for all possible new houses?
+
+---
+
+### Case Study: Real Estate
+
+```{r voronoi,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, warning=F}
+voronoi_cells <- oxford_real_estate %>%
+  group_by(std_sqft,std_lot) %>%
+  summarize(pred_price = mean(sale_price))
+
+p10 <- ggplot()+
+  stat_voronoi(aes(x=std_sqft,y=std_lot, fill=pred_price),geom="polygon",
+             data=voronoi_cells) +
+  geom_point(aes(x=std_sqft,y=std_lot),color="black",shape=1,
+             data=oxford_real_estate, size=2) +
+  scale_fill_viridis_c("Predicted \nPrice",
+                        limits = c(0,400000),
+                        breaks = seq(0,400000,by=100000),
+                        labels = paste0("$",seq(0,400,by=100),"k"))+
+  labs(x="Standardized Floor Space",
+       y="Standardized Lot Size",
+       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+       subtitle="Nearest-Neighbor Regression is a Voronoi Heatmap") +
+  mytheme
+
+ggsave(file="OxfordHousesVoronoi.png",dpi=600,
+       width=10, height=5,units="in")
+
+knitr::include_graphics("OxfordHousesVoronoi.png")
+```
+
 
 
 
