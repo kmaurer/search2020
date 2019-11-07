@@ -266,7 +266,6 @@ asdf
 asdf
 
 ---
-
 class: center, middle
 ## Discussion
 
@@ -274,53 +273,13 @@ class: center, middle
   
 ### Benefits and Drawbacks of KNN
   
-  Predictions not based on linear combinations of input variables
-
-- This could be *bad* if there is a linear relationship between inputs and the response
-- This could be *good* if there is a non-linear, localized structure to predictive structure
-- In the real estate context, how are prices set?
-  
-  --
-  <br><br>
-  
-  Computationally Demanding
-
-- For each new instance, must calculate and sort $n$ distances
-
---
-  <br><br>
-  
-  Distance Metrics
-
-- Euclidean distances depend on scaling in each dimension
-- Other distance metrics possible (e.g. Manhattan distance)
-
---
-  <br><br>
-  
-  Easily adapts for *classification* problems
-
-- Make prediction based on *most common class* in neighborhood
+asdfs  
 
 ---
   
-  ### Conclusions and Future Work
-  
-  <br>
-  
-  #### A **K-Nearest Neighbor model** generates predictions based on the responses of the **K most similar** previously observed instances. 
-  
-  --
-  
-  <br><br>
-  
-  #### Algorithm: Compute the distances, Sort, Select K neighbors, Make prediction based on neighbors 
-  
-  --
-  
-  <br><br>
-  
-  #### There are user-friendly implementations of KNN available in open-source programming languages
+### Conclusions and Future Work
+
+asdasf
   
 ---
   
@@ -389,11 +348,9 @@ attributes in the wild. In Proceedings of International Conference on Computer V
 - Zheng, B.; Lin, X.; Xiao, Y.; Yang, J.; and He, L. 2018. An effective method for identifying unknown unknowns with noisy oracle. In International Conference on Case-Based Reasoning, pages 480–495. Springer, 2018. 2    
       
 ---
-      
+
 class: center, middle
     
 # Thanks!
     
-    
-    
-    Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
