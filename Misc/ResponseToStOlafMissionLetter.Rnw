@@ -70,7 +70,7 @@ Karsten T. Maurer \\
 
 \opening{Dear President Anderson,} 
 
-My name is Karsten Maurer. I am a candidate for the position of assistant professor of Statistics in the Mathematics, Statistics and Computer Science Department at St. Olaf. I am writing today because I was informed that I would have the opportunity to meet with you during my on-campus interview. I greatly appreciate the chance to meet with you and discuss how I would fit into the campus community at St. Olaf and work to contribute toward the college mission. Attached you will find my brief written reflection on the college mission statement and my curriculum vitae. I look forward to our meeting next week. Thank you again for your time. 
+My name is Karsten Maurer. I am a candidate for the position of assistant professor of Statistics in the Mathematics, Statistics and Computer Science Department at St. Olaf. I am writing today because I was informed that I will have the opportunity to meet with you during my on-campus interview. I greatly appreciate the chance to meet with you and discuss how I would fit into the campus community at St. Olaf and work to contribute toward the college mission. Attached you will find my brief written reflection on the college mission statement and my curriculum vitae. I look forward to our meeting next week. Thank you again for your time. 
 
 \addtolength{\medskipamount}{-1\medskipamount}
 \closing{Sincerely,\\Karsten Maurer \vspace{.1in}}

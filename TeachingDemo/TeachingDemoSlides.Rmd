@@ -161,10 +161,17 @@ Our prediction for you is the average sleep from your 3 closest neighbors
 ### KNN Algorithm
 
 To predict for any new observation $\bf{X_0}$
+<br><br>
 
 1. Compute the distances between $\bf{X_0}$ and all previous observations
+<br><br>
+
 2. Sort distances smallest to largest
+<br><br>
+
 3. Select K smallest, record which observations these belong to
+<br><br>
+
 4. Compute the average response of these observation 
 ---
 
@@ -176,7 +183,7 @@ Motivation:
 
 ### Case Study: Real Estate
 
-```{r KNN_plot_house,echo=F,include=T,eval=T, fig.align='center'}
+```{r KNN_plot_house,echo=F,include=T,eval=T, fig.align='center', cache=TRUE}
 load("~/GitHub/search2020/TeachingDemo/sold_homes2.Rdata")
 
 oxford_real_estate <- details_tall %>% 
@@ -225,7 +232,7 @@ knitr::include_graphics("OxfordHouses.png")
 
 ### Case Study: Real Estate
 
-```{r KNN_plot_house_me,echo=F,include=T,eval=T, fig.align='center'}
+```{r KNN_plot_house_me,echo=F,include=T,eval=T, fig.align='center', cache=TRUE}
 my_house <- data.frame(sqft = 1300, lot_size=17000, zestimate=161000)
 
 # p2 <- ggplot()+
@@ -255,7 +262,7 @@ knitr::include_graphics("OxfordHousesPlusMe.png")
 
 ### Case Study: Real Estate
 
-```{r KNN_dist_from_me_standarized,echo=F,include=T,eval=T, fig.align='center'}
+```{r KNN_dist_from_me_standarized,echo=F,include=T,eval=T, fig.align='center', cache=TRUE}
 oxford_real_estate$std_sqft <- scale(oxford_real_estate$sqft)
 oxford_real_estate$std_lot <- scale(oxford_real_estate$lot_size)
 
@@ -293,7 +300,7 @@ knitr::include_graphics("OxfordHousesPlusMe_standardized.png")
 
 ### Case Study: Real Estate
 
-```{r KNN_dist_from_me,echo=F,include=T,eval=T, fig.align='center'}
+```{r KNN_dist_from_me,echo=F,include=T,eval=T, fig.align='center', cache=TRUE}
 
 oxford_real_estate$std_sqft <- scale(oxford_real_estate$sqft)
 oxford_real_estate$std_lot <- scale(oxford_real_estate$lot_size)
@@ -333,7 +340,7 @@ knitr::include_graphics("OxfordHousesDistFromMe.png")
 
 ### Case Study: Real Estate
 
-```{r KNN_dist_from_me_rearranged,echo=F,include=T,eval=T, fig.align='center', echo=FALSE}
+```{r KNN_dist_from_me_rearranged,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, cache=TRUE}
 oxford_real_estate$std_sqft <- scale(oxford_real_estate$sqft)
 oxford_real_estate$std_lot <- scale(oxford_real_estate$lot_size)
 
@@ -413,7 +420,7 @@ transition_plot_data <- rbind(Original,rearranged)
 
 ### Case Study: Real Estate
 
-```{r KNN_dist_from_me_rearranged_static,echo=F,include=T,eval=T, fig.align='center', echo=FALSE}
+```{r KNN_dist_from_me_rearranged_static,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, cache=TRUE}
 
 # p6 <- ggplot()+
 #   geom_segment(aes(x=x, xend=xend, y=y-min(oxford_real_estate$std_lot),
@@ -483,7 +490,7 @@ knitr::include_graphics("nearestNeighbor.png")
 
 ### Case Study: Real Estate
 
-```{r ten_NN,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, warning=F}
+```{r ten_NN,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, warning=F, cache=TRUE}
 k=10
 nn_idx <- order(distfromme,decreasing=FALSE)[1:k]
 # figure out stepsize in ordering position
@@ -491,36 +498,36 @@ stepsize <- diff(rearranged[nn_idx,]$x[1:2])
 
 # mean(rearranged[nn_idx,]$sale_price)
 
-# p8 <- ggplot()+
-#   geom_vline(xintercept = rearranged[nn_idx,]$x[k]+.5*stepsize,
-#              color=SO_gold)+
-#   annotate(geom="text",x=rearranged[nn_idx,]$x[k]+.5*stepsize,
-#            y=2.8,label="10-Nearest Neighborhood Cutoff", angle=90, vjust=1.1, 
-#            color=SO_gold)+
-#   annotate(geom="text",x=rearranged[nn_idx,]$x[1],
-#            y=0.75,label=expression(paste(hat(y), " = $154150")),
-#            angle=15, vjust=1)+
-#   geom_segment(aes(x=x, xend=xend, y=y-min(oxford_real_estate$std_lot),
-#                    yend=yend-min(oxford_real_estate$std_lot), color=sale_price),
-#                 size=1,
-#              data=dplyr::filter(transition_plot_data, type=="Rearranged"))+
-#   scale_color_viridis_c("Price",
-#                         limits = c(0,400000),
-#                         breaks = seq(0,400000,by=100000),
-#                         labels = paste0("$",seq(0,400,by=100),"k"))+
-#   scale_y_continuous(breaks=0:5)+
-#   labs(x="Ordered Neighbors",
-#        y="Standardized Distance",
-#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
-#        subtitle="10-Nearest Neighbors Predicted Price") +
-#   mytheme +
-#   theme(axis.ticks.x = element_blank(),
-#         axis.text.x = element_blank(),
-#         panel.grid.major.x = element_blank(),
-#         panel.grid.minor.x = element_blank())
-# 
-# ggsave(file="OxfordHousesDistFromMeArranged_10nn.png",dpi=600,
-#        width=10, height=5,units="in")
+p8 <- ggplot()+
+  geom_vline(xintercept = rearranged[nn_idx,]$x[k]+.5*stepsize,
+             color=SO_gold)+
+  annotate(geom="text",x=rearranged[nn_idx,]$x[k]+.5*stepsize,
+           y=2.8,label="10-Nearest Neighborhood Cutoff", angle=90, vjust=1.1,
+           color=SO_gold)+
+  annotate(geom="text",x=rearranged[nn_idx,]$x[1],
+           y=0.75,label=expression(paste(hat(y), " = $154150")),
+           angle=15, vjust=1)+
+  geom_segment(aes(x=x, xend=xend, y=y-min(oxford_real_estate$std_lot),
+                   yend=yend-min(oxford_real_estate$std_lot), color=sale_price),
+                size=1,
+             data=dplyr::filter(transition_plot_data, type=="Rearranged"))+
+  scale_color_viridis_c("Price",
+                        limits = c(0,400000),
+                        breaks = seq(0,400000,by=100000),
+                        labels = paste0("$",seq(0,400,by=100),"k"))+
+  scale_y_continuous(breaks=0:5)+
+  labs(x="Ordered Neighbors",
+       y="Standardized Distance",
+       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+       subtitle="10-Nearest Neighbors Predicted Price") +
+  mytheme +
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
+
+ggsave(file="OxfordHousesDistFromMeArranged_10nn.png",dpi=600,
+       width=10, height=5,units="in")
 
 knitr::include_graphics("OxfordHousesDistFromMeArranged_10nn.png")
 ```
@@ -529,44 +536,43 @@ knitr::include_graphics("OxfordHousesDistFromMeArranged_10nn.png")
 
 ### Case Study: Real Estate
 
-```{r twentyfive_NN,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, warning=F}
+```{r twentyfive_NN,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, warning=F, cache=TRUE}
 k=25
 nn_idx <- order(distfromme,decreasing=FALSE)[1:k]
 # figure out stepsize in ordering position
 stepsize <- diff(rearranged[nn_idx,]$x[1:2])
 
-# mean(rearranged[nn_idx,]$sale_price)
-# 
-# p9 <- ggplot()+
-#   geom_vline(xintercept = rearranged[nn_idx,]$x[k]+.5*stepsize,
-#              color=SO_gold)+
-#   annotate(geom="text",x=rearranged[nn_idx,]$x[k]+.5*stepsize,
-#            y=2.8,label="25-Nearest Neighborhood Cutoff", angle=90, vjust=1.1, 
-#            color=SO_gold)+
-#   annotate(geom="text",x=mean(rearranged[nn_idx,]$x),
-#            y=0.75,label=expression(paste(hat(y), " = $153296")),
-#            angle=15, vjust=1)+
-#   geom_segment(aes(x=x, xend=xend, y=y-min(oxford_real_estate$std_lot),
-#                    yend=yend-min(oxford_real_estate$std_lot), color=sale_price),
-#                 size=1,
-#              data=dplyr::filter(transition_plot_data, type=="Rearranged"))+
-#   scale_color_viridis_c("Price",
-#                         limits = c(0,400000),
-#                         breaks = seq(0,400000,by=100000),
-#                         labels = paste0("$",seq(0,400,by=100),"k"))+
-#   scale_y_continuous(breaks=0:5)+
-#   labs(x="Ordered Neighbors",
-#        y="Standardized Distance",
-#        title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
-#        subtitle="25-Nearest Neighbors Predicted Price") +
-#   mytheme +
-#   theme(axis.ticks.x = element_blank(),
-#         axis.text.x = element_blank(),
-#         panel.grid.major.x = element_blank(),
-#         panel.grid.minor.x = element_blank())
-# 
-# ggsave(file="OxfordHousesDistFromMeArranged_25nn.png",dpi=600,
-#        width=10, height=5,units="in")
+
+p9 <- ggplot()+
+  geom_vline(xintercept = rearranged[nn_idx,]$x[k]+.5*stepsize,
+             color=SO_gold)+
+  annotate(geom="text",x=rearranged[nn_idx,]$x[k]+.5*stepsize,
+           y=2.8,label="25-Nearest Neighborhood Cutoff", angle=90, vjust=1.1,
+           color=SO_gold)+
+  annotate(geom="text",x=mean(rearranged[nn_idx,]$x),
+           y=0.75,label=expression(paste(hat(y), " = $153296")),
+           angle=15, vjust=1)+
+  geom_segment(aes(x=x, xend=xend, y=y-min(oxford_real_estate$std_lot),
+                   yend=yend-min(oxford_real_estate$std_lot), color=sale_price),
+                size=1,
+             data=dplyr::filter(transition_plot_data, type=="Rearranged"))+
+  scale_color_viridis_c("Price",
+                        limits = c(0,400000),
+                        breaks = seq(0,400000,by=100000),
+                        labels = paste0("$",seq(0,400,by=100),"k"))+
+  scale_y_continuous(breaks=0:5)+
+  labs(x="Ordered Neighbors",
+       y="Standardized Distance",
+       title="House Prices in Oxford Ohio: Nov 2017 - Oct 2019",
+       subtitle="25-Nearest Neighbors Predicted Price") +
+  mytheme +
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
+
+ggsave(file="OxfordHousesDistFromMeArranged_25nn.png",dpi=600,
+       width=10, height=5,units="in")
 
 knitr::include_graphics("OxfordHousesDistFromMeArranged_25nn.png")
 ```
@@ -577,15 +583,7 @@ knitr::include_graphics("OxfordHousesDistFromMeArranged_25nn.png")
 class: center, middle
 ## A **K-Nearest Neighbor model** generates predictions based on the responses of the **K most similar** previously observed instances. 
 
---
-
-So what does this prediction  function look like for all possible new houses?
-
----
-
-### Case Study: Real Estate
-
-```{r voronoi,echo=F,include=T,eval=T, fig.align='center', echo=FALSE, warning=F}
+```{r voronoi,echo=F,include=F,eval=T, fig.align='center', echo=FALSE, warning=F, cache=TRUE}
 voronoi_cells <- oxford_real_estate %>%
   group_by(std_sqft,std_lot) %>%
   summarize(pred_price = mean(sale_price))
@@ -611,27 +609,94 @@ ggsave(file="OxfordHousesVoronoi.png",dpi=600,
 knitr::include_graphics("OxfordHousesVoronoi.png")
 ```
 
+---
 
-
+class: center, middle
+## Now that we have some intuition for the algorithms, How can we could use KNN in an **applied** setting? 
 
 ---
 
-### Suggested Supplementary Readings
+class: center, middle
 
-- James, Witten, Hastie and Tibshirani (2013) Introduction to Statistical Learning. URL <http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf>
-- Grolemund and Wickham (2017) R For Data Science. URL <https://r4ds.had.co.nz/>
+## Let's **code** it up with the house prices data! 
+
+## If you have your laptop with **R** and **RStudio** installed, please code along!
+
 <br><br>
 
-### Software and Data
+## Starter Code Available at [kmaurer.github.io](kmaurer.github.io)
 
-- R Core Team, 2019. R: A language and environment for statistical computing. 
-- R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
-- RStudio Team (2016). RStudio: Integrated Development for R. RStudio,
-  Inc., Boston, MA URL http://www.rstudio.com/.
-- Wickham, 2019. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+---
+
+### Benefits and Drawbacks of KNN
+
+Predictions not based on linear combinations of input variables
+
+- This could be *bad* if there is a linear relationship between inputs and the response
+- This could be *good* if there is a non-linear, localized structure to predictive structure
+- In the real estate context, how are prices set?
+
+--
+<br><br>
+
+Computationally Demanding
+
+- For each new instance, must calculate and sort $n$ distances
+
+--
+<br><br>
+
+Distance Metrics
+
+- Euclidean distances depend on scaling in each dimension
+- Other distance metrics possible (e.g. Manhattan distance)
+
+--
+<br><br>
+
+Easily adapts for *classification* problems
+
+- Make prediction based on *most common class* in neighborhood
+
+---
+
+### Big Takeaways
+
+<br>
+
+#### A **K-Nearest Neighbor model** generates predictions based on the responses of the **K most similar** previously observed instances. 
+
+--
+
+<br><br>
+
+#### Algorithm: Compute the distances, Sort, Select K neighbors, Make prediction based on neighbors 
+
+--
+
+<br><br>
+
+#### There are user-friendly implementations of KNN available in open-source programming languages
+
+---
+
+#### Suggested Supplementary Readings
+
+- James, Witten, Hastie and Tibshirani (2013) Introduction to Statistical Learning. URL *http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf*
+- Grolemund and Wickham (2017) R For Data Science. URL *https://r4ds.had.co.nz/*
+
+#### Software and Data
+
+- Garrett, Nar, Fisher, Maurer (2018). ggvoronoi: Voronoi Diagrams and Heatmaps with ggplot2. J. Open Source Software, 3(32), 1096.
+- Kuhn (2019). caret: Classification and Regression Training. R package version 6.0-84. *https://CRAN.R-project.org/package=caret*
+- R Core Team (2019). R: A language and environment for statistical computing. 
+- R Foundation for Statistical Computing, Vienna, Austria. URL *https://www.R-project.org/*.
+- RStudio Team (2016). RStudio: Integrated Development for R. RStudio, Inc., Boston, MA URL *http://www.rstudio.com/*.
+- Temple Lang, CRAN Team (2019). XML: Tools for Parsing and Generating XML Within R and S-Plus. R package version 3.98-1.20.  *https://CRAN.R-project.org/package=XML*
+- Wickham (2017). tidyverse: Easily Install and Load the 'Tidyverse'. R package version 1.2.1. *https://CRAN.R-project.org/package=tidyverse*
+- Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.4. *https://CRAN.R-project.org/package=rvest*
 - Xie (2019). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package version 1.22.
-
-
+- Zillow home listings data from Oxford, Ohio. *https://www.zillow.com/*
 
 ---
 
@@ -640,5 +705,6 @@ class: center, middle
 
 # Thanks!
 
-Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
