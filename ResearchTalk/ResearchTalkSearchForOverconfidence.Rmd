@@ -172,6 +172,8 @@ Attenberg et al. (2015) define *Unknown Unknowns* (UUs) as instances, $x$, from 
 
 ### Coverage-Based Utility Details
   
+<br><br>  
+  
 $$U(Q) = \sum_{x \in \mathbb{X}} c_x \cdot \max_{q \in S} \left\{sim\left(x,q \right) \right\}$$ 
 
 - $\mathbb{X} \subset \mathbb{R}^p$ is $p$-dimensional unlabeled test set
@@ -214,7 +216,7 @@ $$U(Q) = \sum_{x \in \mathbb{X}} c_x \cdot \max_{q \in S} \left\{sim\left(x,q \r
 
 ### Coverage-Based Query vs. Most-Uncertain Query
 
-```{r KNN_plot_house,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
+```{r coveragevsMU,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
 knitr::include_graphics("CoverageVsMostUncertain.png") 
 ```
 
@@ -227,23 +229,79 @@ class: center, middle
 ---
 
 ### Adapting utility objectives to overcome deficiencies
-asdf
+ 
+#### Claims: 
+
+the focus on discovering Unknown Unknowns, as defined in current literature, is flawed.
+
+High confidence should not be intepreted as an absolute. Misclassifications *should* be occuring.
+
+The problem is when the rate of misclassification exceeds the rate expected based on classifier confidence. 
+
+--
+
+### Adaptated Objectives:
+
+1. Our goal should be to query instances that demonstrate *classifier overconfidence*; containing more misclassification than should be expected based on classifier confidence. 
+2. Our query should also seek to thoroughly explore the feature space. 
+
+Thus, we propose a new utility function and associated greedy query algorithm that rewards both of these new objectives
 
 ---
 
 ### Facility Locations Utility Function
-asdf
+
+<br><br>
+
+$$W(Q) = \sum_{q \in S} r \left(c_q\right) - \frac{1}{n} \sum_{x \in \mathbb{X}} \min_{q \in S}\left(d\left(x,q\right)\right)$$
+<br><br>
+
+$r\left(c_q\right) = \log(1/(1-c_q))$ is the *reward* function for finding a misclassification with confidence $c_{q}$
+
+<br>
+
+$d(x,q)$ is the Euclidean distance between points $x$ and $q$.
 
 ---
 
-### Greedy Adaptive Query Algorithm
-asdf
+### Algorithm for Greedy Facility Location Search
+
+**Input:** 
+Test set $\mathbb{X}$, prior $\hat{\phi}\left(x|Q=\emptyset\right)$, budget B
+$Q=\{\}$ inputs that have been queried
+$y_Q = \{\}$ oracle defined labels
+
+**For:** b = 1, 2, ..., B **do:**
+
+ $q' = argmax_{q' \not\in Q} E \left[W\left(Q \cup q'\right) \right]$
+
+ $Q \leftarrow Q \cup q'$
+
+ $y_Q \leftarrow y_Q \cup y_{q'}$
+
+ $S \leftarrow \left\{x | x \in Q \space \text{ and } y_x \neq M(x) \right\}$
+
+ $b \leftarrow b + 1$
+
+**Return:** $Q$, $S$ and $y_Q$Q, S and yQ
 
 ---
 
 ### Empirical Experiment Results
 
-asdf
+#### Datasets 
+
+```{r FLUvsMU,echo=F,include=T,eval=T,fig.align='center', cache=TRUE}
+knitr::include_graphics("overconfidence_wide.png")
+```
+
+--
+
+<br>
+
+1. Compare Facility Location Query vs. Most-Uncertain Query baseline
+
+2. Evaluate the efficiency of query algorithms in finding misclassification relative to the confidence of the selected instances
 
 ---
 
