@@ -36,7 +36,6 @@ SO_gold = "#cc8a00"
 duo_accent(primary_color = "black",secondary_color = SO_gold,header_color = SO_gold,title_slide_text_color = SO_gold)
 ```
 
-
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(tidyverse)
@@ -49,7 +48,7 @@ library(gganimate)
 
 ### Who am I?
 
-```{r, out.width = "320px", echo=FALSE}
+```{r, out.width = "320px", include=T, echo=FALSE}
 knitr::include_graphics("http://kmaurer.github.io/CV_files/figure-html/unnamed-chunk-1-1.png")
 ```
 
@@ -151,20 +150,20 @@ Attenberg et al. (2015) define *Unknown Unknowns* (UUs) as instances, $x$, from 
 
 ### Exisiting Literature on Utility-Based Query Algorithms
 
-#### Attenberg et al. (2015) 
+#### Attenberg et al. (2015) - Crowdsource
   - "Beat the Machine" game with monetary rewards for finding UUs
   - Crowdsourcing as mechanism for learning classifier deficiencies 
   - Basically like using many oracles with large budget for labelling 
 
 --
 
-#### Lakkaraju et al. (2017)
+#### Lakkaraju et al. (2017) - Multi-Armed Bandit
   - Adaptive query algorithm that updates the optimal recommendation for next oracle query after evaluating the newly labeled instance
   - Utility function provides a unit value for each discovered UU and penalizes by the cost of labeling
   
 --
 
-#### Bansal and Weld (2018)
+#### Bansal and Weld (2018) - Coverage-Based
   - Another greedy query algorithm, but uses coverage-based utility
   - Goal is to encourage both discovery of UUs and exploration of feature space
   
@@ -220,7 +219,6 @@ $$U(Q) = \sum_{x \in \mathbb{X}} c_x \cdot \max_{q \in S} \left\{sim\left(x,q \r
 knitr::include_graphics("CoverageVsMostUncertain.png") 
 ```
 
-
 ---
 
 class: center, middle
@@ -232,7 +230,7 @@ class: center, middle
  
 #### Claims: 
 
-the focus on discovering Unknown Unknowns, as defined in current literature, is flawed.
+The focus on discovering Unknown Unknowns, as defined in current literature, is flawed.
 
 High confidence should not be intepreted as an absolute. Misclassifications *should* be occuring.
 
@@ -266,32 +264,35 @@ $d(x,q)$ is the Euclidean distance between points $x$ and $q$.
 
 ### Algorithm for Greedy Facility Location Search
 
-**Input:** 
-Test set $\mathbb{X}$, prior $\hat{\phi}\left(x|Q=\emptyset\right)$, budget B
-$Q=\{\}$ inputs that have been queried
-$y_Q = \{\}$ oracle defined labels
+**Input:** <br>
+Test set $\mathbb{X}$, <br>
+prior $\hat{\phi}\left(x|Q=\emptyset\right)$, <br>
+budget B <br>
+$Q=\{\}$ inputs that have been queried <br>
+$y_Q = \{\}$ oracle defined labels <br>
 
 **For:** b = 1, 2, ..., B **do:**
 
- $q' = argmax_{q' \not\in Q} E \left[W\left(Q \cup q'\right) \right]$
+>  $q' = argmax_{q' \not\in Q} E \left[W\left(Q \cup q'\right) \right]$
 
- $Q \leftarrow Q \cup q'$
+>  $Q \leftarrow Q \cup q'$
 
- $y_Q \leftarrow y_Q \cup y_{q'}$
+>  $y_Q \leftarrow y_Q \cup y_{q'}$
 
- $S \leftarrow \left\{x | x \in Q \space \text{ and } y_x \neq M(x) \right\}$
+>  $S \leftarrow \left\{x | x \in Q \space \text{ and } y_x \neq M(x) \right\}$
 
- $b \leftarrow b + 1$
+>  $b \leftarrow b + 1$
 
-**Return:** $Q$, $S$ and $y_Q$Q, S and yQ
 
+
+**Return:** $Q$, $S$ and $y_Q$
 ---
 
 ### Empirical Experiment Results
 
 #### Datasets 
 
-```{r FLUvsMU,echo=F,include=T,eval=T,fig.align='center', cache=TRUE}
+```{r overconfidence,echo=F,include=T,eval=T,fig.align='center', cache=TRUE}
 knitr::include_graphics("overconfidence_wide.png")
 ```
 
@@ -302,6 +303,43 @@ knitr::include_graphics("overconfidence_wide.png")
 1. Compare Facility Location Query vs. Most-Uncertain Query baseline
 
 2. Evaluate the efficiency of query algorithms in finding misclassification relative to the confidence of the selected instances
+
+---
+### Facility Location Query vs. Most-Uncertain Query
+
+```{r FLUvsMU,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
+knitr::include_graphics("flUtil.png") 
+```
+
+---
+### Comparing Apples and Oranges
+
+Making comparison to a baseline on different utility outcomes is too indirect
+
+Can't use the utilities on which the query algorithms optimize without obvious bias
+
+<br><br>
+
+--
+
+#### Need a metric for comparison of query algorithms. 
+
+$$ |S| / \sum_{x=1}^B(1- c_x) $$
+
+*Standardized Discovery Ratio* (SDR) is the ratio of discovered misclassifications to the expected number based on confidence
+
+Numerator is count of discovered misclassification
+
+Denominator is expected count based on confidence
+
+Higher SDR values suggest higher efficiency of identifying overconfident instances
+
+---
+### Facility Location Query vs. Most-Uncertain Query
+
+```{r SDR,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
+knitr::include_graphics("discoveryRatio.png") 
+```
 
 ---
 
@@ -329,15 +367,14 @@ class: center, middle
 
 ---
   
-### Benefits and Drawbacks of KNN
-  
-asdfs  
-
----
-  
 ### Conclusions and Future Work
 
-asdasf
+#### Facility Locations Utility Methods
+
+Performs similar to Most-Uncertain query when classifier overconfidence is worst in moderately confidence instances
+
+Outperforms all previous methods when classifier overconfidence is worst in highest confidence instances 
+
   
 ---
   

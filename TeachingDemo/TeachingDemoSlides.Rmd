@@ -74,13 +74,13 @@ knitr::include_graphics("http://kmaurer.github.io/CV_files/figure-html/unnamed-c
 ---
 ### Predictive Modeling Background - Discussion
 
-- What types of predictive models have you encountered in your classes so far?
+#### What types of predictive models have you encountered in your classes so far?
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
 --
 
-- What are the two general types of responses that we might try to predict? (Supervised Learning)
+#### What are the two general types of responses that we might try to predict? (Supervised Learning)
 
 
 ---
@@ -158,7 +158,7 @@ Our prediction for you is the average sleep from your 3 closest neighbors
 
 ---
 
-### KNN Algorithm
+### KNN Regression Algorithm
 
 To predict for any new observation $\bf{X_0}$
 <br><br>
@@ -173,11 +173,6 @@ To predict for any new observation $\bf{X_0}$
 <br><br>
 
 4. Compute the average response of these observation 
----
-
-### Case Study: Real Estate
-
-Motivation: 
 
 ---
 
@@ -612,7 +607,7 @@ knitr::include_graphics("OxfordHousesVoronoi.png")
 ---
 
 class: center, middle
-## Now that we have some intuition for the algorithms, How can we could use KNN in an **applied** setting? 
+## Now that we have some intuition for the algorithms, <br><br> how do we **use** KNN regression in an **applied** setting? 
 
 ---
 
