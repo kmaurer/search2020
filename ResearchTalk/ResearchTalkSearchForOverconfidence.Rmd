@@ -71,10 +71,10 @@ knitr::include_graphics("http://kmaurer.github.io/CV_files/figure-html/unnamed-c
 #### Unknown Unknowns
 
 - Exisiting Literature on Utility-Based Query Algorithms
-- Deficiencies in existing methods
+- Deficiencies in Existing Methods
 
 #### Facility Locations Search Algorithm
-- Adapting utility objectives to overcome deficiencies
+- Adapting Utility Objectives to Overcome Deficiencies
 - Facility Locations Utility Function
 - Greedy Adaptive Query Algorithm
 - Empirical Experiment Results
@@ -85,7 +85,7 @@ knitr::include_graphics("http://kmaurer.github.io/CV_files/figure-html/unnamed-c
 - Empirical Experiment Results
 
 #### Discussion
-- Conclusions and Future Work
+- Conclusions, Current Work and Future Work
 
 ---
 
@@ -265,21 +265,21 @@ $d(x,q)$ is the Euclidean distance between points $x$ and $q$.
 ### Algorithm for Greedy Facility Location Search
 
 **Input:** <br>
-Test set $\mathbb{X}$, <br>
-prior $\hat{\phi}\left(x|Q=\emptyset\right)$, <br>
-budget B <br>
+Test set $\mathbb{X}$, prior $\hat{\phi}\left(x|Q=\emptyset\right)$, budget B <br>
 $Q=\{\}$ inputs that have been queried <br>
 $y_Q = \{\}$ oracle defined labels <br>
 
 **For:** b = 1, 2, ..., B **do:**
 
->  $q' = argmax_{q' \not\in Q} E \left[W\left(Q \cup q'\right) \right]$
+>  $q' = argmax_{q' \not\in Q} E_{\hat{\phi}} \left[W\left(Q \cup q'\right) \right]$
 
 >  $Q \leftarrow Q \cup q'$
 
 >  $y_Q \leftarrow y_Q \cup y_{q'}$
 
 >  $S \leftarrow \left\{x | x \in Q \space \text{ and } y_x \neq M(x) \right\}$
+
+> $\hat{\phi} \leftarrow \hat{\phi}\left(x|Q\right)$
 
 >  $b \leftarrow b + 1$
 
@@ -348,18 +348,46 @@ class: center, middle
 
 ---
 
-### Objective and Intuition
-asdf
+### Leveraging Adversarial Learning Methods for Discovering Overconfidence
+
+**Problem:** Adaptive query algorithms appear to discover overconfidence slowly and inconsistently
+
+**Goal:** Initializing oracle query search with selection of "low hanging fruit" - a set of instances in the unlabeled test set that are *likely* to be overconfident
+
+Need unsupervised method to extract more information about model confidence on unlabeled points
+
+<br>
+--
+
+*Adversarial instances* are points that have been adapted to fool classifiers with malicious intent
+  - This can involve minimally changing features until the instance is *misclassified*
+  - Images can be made adversarial by selectively adding noise in the pixels
+  - This is a supervised task, because it uses the true class labels
+  
+<br>
+--
+
+**Proposal:** Use adversarial methods to minimally change features until the instance *changes predicted class*. 
+
+Define *minimal adversarial distance* (MAD) as the distance between an instance and the closest point in the feature space with different predicted class
+
+We will query instances that have low MAD values relative to their confidence score. 
 
 ---
 
-### Adversarial Distance-Based Query Algorithm
-asdf
+### Adversarial Distance-Based Query
+
+```{r AdversarialLoess,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
+knitr::include_graphics("AdversarialLoess.png") 
+```
 
 ---
 
 ### Empirical Experiment Results
-asdf
+
+```{r AdversarialSDR,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
+knitr::include_graphics("AdversarialQueryResults.png") 
+```
 
 ---
 class: center, middle
@@ -367,17 +395,48 @@ class: center, middle
 
 ---
   
-### Conclusions and Future Work
+### Conclusions
 
 #### Facility Locations Utility Methods
 
-Performs similar to Most-Uncertain query when classifier overconfidence is worst in moderately confidence instances
+Performs well across all overconfidence profiles seen in empirical evaluations 
 
-Outperforms all previous methods when classifier overconfidence is worst in highest confidence instances 
+SDR improves as budget increases, but this learning can be slow and inconsistent
 
-  
+<br><br><br>
+
+--
+#### Adversarial Distance Methods
+
+Efficient in discovering instances that display classifier overconfidence with small budgets
+
+SDR decreases as budget increases, decreasing returns on oracle investment
+
+Implemented successfully in image classifier setting 
+
 ---
+
+### Continuing and Future work
+
+#### Student Research Projects: 
+
+- **Bunyod Tusmatov** extended adversarial methods to text classifiers, observed similarly strong SDR outcomes
+
+- **Sally Dufek** currently working to extend adversarial methods to generalized feature space with black box classifiers
+
+- Can envision **undergraduates** helping evaluate algorithms in a more extensive empirical experiment
   
+<br><br>  
+  
+#### Hybrid query algorithm
+
+- Initialize query with set from adversarial distance method
+
+- Continue with adaptive Facility Location utility method until budget
+
+---
+### Resources
+
 #### Code Repository
 
 - These Slides: *https://github.com/kmaurer/search2020/tree/master/ResearchTalk*
