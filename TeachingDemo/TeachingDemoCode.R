@@ -29,22 +29,21 @@ ggplot() +
 #--------------------------------------------------------------------------------------
 ### Start coding knn for predictions here:
 
+# Define a 10-nearest neighbor model
 price_knn <- knnreg(sale_price ~ std_sqft + std_lot,
-                   data=real_estate, k=1)
-
-
-
-
-
+                   data=real_estate, k=10)
+# Use the 10-NN regression to predict for a new house
 new_house <- data.frame(std_sqft=1, std_lot=0)
 predict(price_knn, newdata = new_house)
 
-
+# Use the 10-NN regression to predict for MANY new houses
+# each with a unique combination of characteristic values
 new_houses <- expand.grid(std_sqft=seq(-1.5,4,.02), 
                           std_lot=seq(-1.5,4,.02))
-
 new_houses$pred_price <- predict(price_knn, newdata = new_houses)
 head(new_houses)
+
+# What do those predictions look like at all unique combinations
 ggplot() +
   geom_tile(aes(x=std_sqft, y=std_lot, fill=pred_price), 
              data=new_houses)+
@@ -67,8 +66,8 @@ ggplot() +
   theme_bw()
 
 
-
-
+### Make an animation of how the predictions change from 1NN to 20NN
+# Build the data for the animation
 compare_knns <- NULL
 for(k in 1:20){
   price_knn <- knnreg(sale_price ~ std_sqft + std_lot,
@@ -78,8 +77,8 @@ for(k in 1:20){
   new_house <- data.frame(std_sqft=1, std_lot=0)
   predict(price_knn, newdata = new_house)
   
-  new_houses <- expand.grid(std_sqft=seq(-1.5,4,.1), 
-                            std_lot=seq(-1.5,4,.1),
+  new_houses <- expand.grid(std_sqft=seq(-1.5,4,.02), 
+                            std_lot=seq(-1.5,4,.02),
                             k=k)
   
   new_houses$pred_price <- predict(price_knn, newdata = new_houses)
@@ -87,7 +86,7 @@ for(k in 1:20){
 }
 head(compare_knns)
 
-
+# Run the animation with gganimate
 library(gganimate)
 p1 <- ggplot() +
   geom_tile(aes(x=std_sqft, y=std_lot, fill=pred_price), 

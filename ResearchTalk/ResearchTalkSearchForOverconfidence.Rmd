@@ -122,9 +122,9 @@ An *oracle* is the person who will find the true labels. We don't want to waste 
 
 #### What are we looking for in the query set?
 
-Attenberg et al. (2015) define *Unknown Unknowns* (UUs) as instances, $x$, from unlabeled test set where the classifier, $f(\cdot)$, is both:
+Attenberg et al. (2015) define *Unknown Unknowns* (UUs) as instances, $x$, from unlabeled test set where the classifier, $M(\cdot)$, is both:
   - Highly confident. Above some threshold $\tau\in (0,1)$. Thus,  $C_{x} \ge \tau$ 
-  - Wrong. Misclassified with $y \ne f(x)$
+  - Wrong. Misclassified with $y \ne M(x)$
 
 <br>
 
@@ -142,9 +142,25 @@ Attenberg et al. (2015) define *Unknown Unknowns* (UUs) as instances, $x$, from 
 #### Example: Image Classifier for Cats and Dogs
 
 - Bias in training set: Cats with light fur and Dogs with dark fur
+
+
+```{r trainingCatsDogs,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
+knitr::include_graphics("TrainingData.png") 
+```
+---
+
+### Unknown Unknowns
+
+#### Example: Image Classifier for Cats and Dogs
+- Bias in training set: Cats with light fur and Dogs with dark fur
 - Test set has all color fur for both cats and dogs
 - Classifier likely to be highly confident but wrong about dark cats and light dogs 
 - A query set that finds these UUs could help us to identify the model deficiency from animal fir color
+
+
+```{r testdatacats,echo=F,include=T,eval=T,fig.height=1,fig.align='center', cache=TRUE}
+knitr::include_graphics("twocats.jpg")
+```
 
 ---
 

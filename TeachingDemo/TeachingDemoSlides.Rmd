@@ -172,7 +172,7 @@ To predict for any new observation $\bf{X_0}$
 3. Select K smallest, record which observations these belong to
 <br><br>
 
-4. Compute the average response of these observation 
+4. Compute the average response of these observations
 
 ---
 
