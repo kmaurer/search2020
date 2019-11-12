@@ -1,22 +1,23 @@
----
-title: "Adaptive Query Algorithms for Efficiently Discovering Overconfident Unknowns"
-author: "Karsten Maurer"
-# institute: "Miami University"
-date: "November 12th, 2019"
-output:
-  xaringan::moon_reader:
-    css: xaringan-themer.css
-    lib_dir: libs
-    nature:
-      ratio: '16:9'
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
-editor_options: 
-  chunk_output_type: console
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Adaptive Query Algorithms for Efficiently Discovering Overconfident Unknowns</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Karsten Maurer" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Adaptive Query Algorithms for Efficiently Discovering Overconfident Unknowns
+### Karsten Maurer
+### November 12th, 2019
+
 ---
 
-<style>
+
+&lt;style&gt;
   .col2 {
     columns: 2 200px;         /* number of columns and width in pixels*/
     -webkit-columns: 2 200px; /* chrome, safari */
@@ -27,30 +28,15 @@ editor_options:
     -webkit-columns: 3 100px;
     -moz-columns: 3 100px;
   }
-</style>
+&lt;/style&gt;
 
-```{r xaringan-themer, include = FALSE, eval=FALSE}
-# devtools::install_github("gadenbuie/xaringanthemer")
-library(xaringanthemer)
-SO_gold = "#cc8a00"
-duo_accent(primary_color = "black",secondary_color = SO_gold,header_color = SO_gold,title_slide_text_color = SO_gold)
-```
 
-```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
-library(tidyverse)
-library(mvtnorm)
-library(ggvoronoi)
-library(iqbin)
-library(gganimate)
 
-```
+
 
 ### Who am I?
 
-```{r, out.width = "320px", include=T, echo=FALSE}
-knitr::include_graphics("http://kmaurer.github.io/CV_files/figure-html/unnamed-chunk-1-1.png")
-```
+&lt;img src="http://kmaurer.github.io/CV_files/figure-html/unnamed-chunk-1-1.png" width="320px" /&gt;
 
 #### Karsten Maurer
 
@@ -98,19 +84,19 @@ class: center, middle
 
 **Context**: You have a classifier that you wish to apply to a domaine in which you only have access to a large set of unlabeled test instances. 
 
-<br>
+&lt;br&gt;
 
 --
 
 **Problem**: You know that the classifier was trained in a different domaine, or you suspect a bias in the training set relative to the testing 
 
-<br>
+&lt;br&gt;
 
 --
 
 **Goal**: Select a set of instances from the unlabeled set that we will look up true labels which we use to evaluate the classifier performance. This is called a *query* of the unlabeled set. 
 
-<br>
+&lt;br&gt;
 
 --
 
@@ -122,11 +108,11 @@ An *oracle* is the person who will find the true labels. We don't want to waste 
 
 #### What are we looking for in the query set?
 
-Attenberg et al. (2015) define *Unknown Unknowns* (UUs) as instances, $x$, from unlabeled test set where the classifier, $M(\cdot)$, is both:
-  - Highly confident. Above some threshold $\tau\in (0,1)$. Thus,  $C_{x} \ge \tau$ 
-  - Wrong. Misclassified with $y \ne M(x)$
+Attenberg et al. (2015) define *Unknown Unknowns* (UUs) as instances, `\(x\)`, from unlabeled test set where the classifier, `\(M(\cdot)\)`, is both:
+  - Highly confident. Above some threshold `\(\tau\in (0,1)\)`. Thus,  `\(C_{x} \ge \tau\)` 
+  - Wrong. Misclassified with `\(y \ne M(x)\)`
 
-<br>
+&lt;br&gt;
 
 --
 
@@ -144,9 +130,7 @@ Attenberg et al. (2015) define *Unknown Unknowns* (UUs) as instances, $x$, from 
 - Bias in training set: Cats with light fur and Dogs with dark fur
 
 
-```{r trainingCatsDogs,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
-knitr::include_graphics("TrainingData.png") 
-```
+&lt;img src="TrainingData.png" width="1801" style="display: block; margin: auto;" /&gt;
 ---
 
 ### Unknown Unknowns
@@ -158,9 +142,7 @@ knitr::include_graphics("TrainingData.png")
 - A query set that finds these UUs could help us to identify the model deficiency from animal fir color
 
 
-```{r testdatacats,echo=F,include=T,eval=T,fig.height=1,fig.align='center', cache=TRUE}
-knitr::include_graphics("twocats.jpg")
-```
+&lt;img src="twocats.jpg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -187,21 +169,21 @@ knitr::include_graphics("twocats.jpg")
 
 ### Coverage-Based Utility Details
   
-<br><br>  
+&lt;br&gt;&lt;br&gt;  
   
-$$U(Q) = \sum_{x \in \mathbb{X}} c_x \cdot \max_{q \in S} \left\{sim\left(x,q \right) \right\}$$ 
+`$$U(Q) = \sum_{x \in \mathbb{X}} c_x \cdot \max_{q \in S} \left\{sim\left(x,q \right) \right\}$$` 
 
-- $\mathbb{X} \subset \mathbb{R}^p$ is $p$-dimensional unlabeled test set
+- `\(\mathbb{X} \subset \mathbb{R}^p\)` is `\(p\)`-dimensional unlabeled test set
 
-- $Q \subset \mathbb{X}$ is the set of points labeled by an oracle,
+- `\(Q \subset \mathbb{X}\)` is the set of points labeled by an oracle,
 
-- $S = \left\{x|x \in Q, y_x \neq M(x)\right\}$ is the set of discovered UUs 
+- `\(S = \left\{x|x \in Q, y_x \neq M(x)\right\}\)` is the set of discovered UUs 
 
-- Classifier $M(x):\mathbb{X} \rightarrow class$,
+- Classifier `\(M(x):\mathbb{X} \rightarrow class\)`,
 
-- $c_x$ is the classifier's confidence in its prediction of $x$, 
+- `\(c_x\)` is the classifier's confidence in its prediction of `\(x\)`, 
 
-- $sim(x,q)$ is a distance-based similarity metric.   
+- `\(sim(x,q)\)` is a distance-based similarity metric.   
   
 ---
 
@@ -224,16 +206,14 @@ $$U(Q) = \sum_{x \in \mathbb{X}} c_x \cdot \max_{q \in S} \left\{sim\left(x,q \r
 
 ### Why is this a problem?
 
-- The utility-based algorithms err toward instances that are "safe bets"; instances with confidence just above the $\tau$ threshold. 
+- The utility-based algorithms err toward instances that are "safe bets"; instances with confidence just above the `\(\tau\)` threshold. 
 - The utility functions reward selection of the most-uncertain (least confident) UUs
   
 ---
 
 ### Coverage-Based Query vs. Most-Uncertain Query
 
-```{r coveragevsMU,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
-knitr::include_graphics("CoverageVsMostUncertain.png") 
-```
+&lt;img src="CoverageVsMostUncertain.png" width="8000" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -265,56 +245,54 @@ Thus, we propose a new utility function and associated greedy query algorithm th
 
 ### Facility Locations Utility Function
 
-<br><br>
+&lt;br&gt;&lt;br&gt;
 
-$$W(Q) = \sum_{q \in S} r \left(c_q\right) - \frac{1}{n} \sum_{x \in \mathbb{X}} \min_{q \in S}\left(d\left(x,q\right)\right)$$
-<br><br>
+`$$W(Q) = \sum_{q \in S} r \left(c_q\right) - \frac{1}{n} \sum_{x \in \mathbb{X}} \min_{q \in S}\left(d\left(x,q\right)\right)$$`
+&lt;br&gt;&lt;br&gt;
 
-$r\left(c_q\right) = \log(1/(1-c_q))$ is the *reward* function for finding a misclassification with confidence $c_{q}$
+`\(r\left(c_q\right) = \log(1/(1-c_q))\)` is the *reward* function for finding a misclassification with confidence `\(c_{q}\)`
 
-<br>
+&lt;br&gt;
 
-$d(x,q)$ is the Euclidean distance between points $x$ and $q$.
+`\(d(x,q)\)` is the Euclidean distance between points `\(x\)` and `\(q\)`.
 
 ---
 
 ### Algorithm for Greedy Facility Location Search
 
-**Input:** <br>
-Test set $\mathbb{X}$, prior $\hat{\phi}\left(x|Q=\emptyset\right)$, budget B <br>
-$Q=\{\}$ inputs that have been queried <br>
-$y_Q = \{\}$ oracle defined labels <br>
+**Input:** &lt;br&gt;
+Test set `\(\mathbb{X}\)`, prior `\(\hat{\phi}\left(x|Q=\emptyset\right)\)`, budget B &lt;br&gt;
+`\(Q=\{\}\)` inputs that have been queried &lt;br&gt;
+`\(y_Q = \{\}\)` oracle defined labels &lt;br&gt;
 
 **For:** b = 1, 2, ..., B **do:**
 
->  $q' = argmax_{q' \not\in Q} E_{\hat{\phi}} \left[W\left(Q \cup q'\right) \right]$
+&gt;  `\(q' = argmax_{q' \not\in Q} E_{\hat{\phi}} \left[W\left(Q \cup q'\right) \right]\)`
 
->  $Q \leftarrow Q \cup q'$
+&gt;  `\(Q \leftarrow Q \cup q'\)`
 
->  $y_Q \leftarrow y_Q \cup y_{q'}$
+&gt;  `\(y_Q \leftarrow y_Q \cup y_{q'}\)`
 
->  $S \leftarrow \left\{x | x \in Q \space \text{ and } y_x \neq M(x) \right\}$
+&gt;  `\(S \leftarrow \left\{x | x \in Q \space \text{ and } y_x \neq M(x) \right\}\)`
 
-> $\hat{\phi} \leftarrow \hat{\phi}\left(x|Q\right)$
+&gt; `\(\hat{\phi} \leftarrow \hat{\phi}\left(x|Q\right)\)`
 
->  $b \leftarrow b + 1$
+&gt;  `\(b \leftarrow b + 1\)`
 
 
 
-**Return:** $Q$, $S$ and $y_Q$
+**Return:** `\(Q\)`, `\(S\)` and `\(y_Q\)`
 ---
 
 ### Empirical Experiment Results
 
 #### Datasets 
 
-```{r overconfidence,echo=F,include=T,eval=T,fig.align='center', cache=TRUE}
-knitr::include_graphics("overconfidence_wide.png")
-```
+&lt;img src="overconfidence_wide.png" width="5600" style="display: block; margin: auto;" /&gt;
 
 --
 
-<br>
+&lt;br&gt;
 
 1. Compare Facility Location Query vs. Most-Uncertain Query baseline
 
@@ -323,9 +301,7 @@ knitr::include_graphics("overconfidence_wide.png")
 ---
 ### Facility Location Query vs. Most-Uncertain Query
 
-```{r FLUvsMU,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
-knitr::include_graphics("flUtil.png") 
-```
+&lt;img src="flUtil.png" width="8000" style="display: block; margin: auto;" /&gt;
 
 ---
 ### Comparing Apples and Oranges
@@ -334,7 +310,7 @@ Making comparison to a baseline on different utility outcomes is too indirect
 
 Can't use the utilities on which the query algorithms optimize without obvious bias
 
-<br><br>
+&lt;br&gt;&lt;br&gt;
 
 --
 
@@ -353,9 +329,7 @@ Higher SDR values suggest higher efficiency of identifying overconfident instanc
 ---
 ### Facility Location Query vs. Most-Uncertain Query
 
-```{r SDR,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
-knitr::include_graphics("discoveryRatio.png") 
-```
+&lt;img src="discoveryRatio.png" width="6400" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -372,7 +346,7 @@ class: center, middle
 
 Need unsupervised method to extract more information about model confidence on unlabeled points
 
-<br>
+&lt;br&gt;
 --
 
 *Adversarial instances* are points that have been adapted to fool classifiers with malicious intent
@@ -380,7 +354,7 @@ Need unsupervised method to extract more information about model confidence on u
   - Images can be made adversarial by selectively adding noise in the pixels
   - This is a supervised task, because it uses the true class labels
   
-<br>
+&lt;br&gt;
 --
 
 **Proposal:** Use adversarial methods to minimally change features until the instance *changes predicted class*. 
@@ -393,17 +367,13 @@ We will query instances that have low MAD values relative to their confidence sc
 
 ### Adversarial Distance-Based Query
 
-```{r AdversarialLoess,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
-knitr::include_graphics("AdversarialLoess.png") 
-```
+&lt;img src="AdversarialLoess.png" width="6400" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ### Empirical Experiment Results
 
-```{r AdversarialSDR,echo=F,include=T,eval=T,fig.width=5,fig.width=6,fig.align='center', cache=TRUE}
-knitr::include_graphics("AdversarialQueryResults.png") 
-```
+&lt;img src="AdversarialQueryResults.png" width="8000" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle
@@ -419,7 +389,7 @@ Performs well across all overconfidence profiles seen in empirical evaluations
 
 SDR improves as budget increases, but this learning can be slow and inconsistent
 
-<br><br><br>
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
 
 --
 #### Adversarial Distance Methods
@@ -441,7 +411,7 @@ Implemented successfully in image classifier setting
 
 - Continue with adaptive Facility Location utility method until budget
   
-<br><br>  
+&lt;br&gt;&lt;br&gt;  
 
 #### Student Research Projects: 
 
@@ -522,4 +492,112 @@ attributes in the wild. In Proceedings of International Conference on Computer V
 class: center, middle
     
 # Thanks!
-    
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
