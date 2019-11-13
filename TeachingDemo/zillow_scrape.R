@@ -9,7 +9,10 @@ library(xml2)
 library(rvest)
 
 #---------------------
-###
+# Initial Goal is to evaluate the structure of both the Zillow API queries through ZillowR
+# and the direct html scraping through rvest
+
+### Here I use my Zillow API key that I source from a file not on GitHut
 source("~/Github/search2020/TeachingDemo/MyZillowSecretKey.R") # You would need to set up your own account and get an ID
 set_zillow_web_service_id(my_zillow_id)
 
@@ -35,34 +38,42 @@ my_comp_list[[2]]["zpid",3][[1]]
 my_comp_list[[2]]["links",4][[1]]$homedetails
 my_comp_list[[2]]["zestimate",3]
 # Doesn't contain very much info, BUT does contain url links for all comps
+# If I didn't want the whole town, and only the neighbors Zillow defines, then I could stop here
 
-# Pull one comparable house
+### Now want to build functions to target url of a specific house, then pull and parse its attributes
+# Pull one comparable house using its url
 my_comp_list[[2]]["links",4][[1]]$homedetails
 
 # pick a comparable from set of ncomp
 comp_num <- 4
 
-# build function that can take any zillow details url and return set of features
+### build function that can take any zillow house url and return set of features
+
 get_house_df <- function(home_url){
   comp_html <- read_html(home_url)
-  
   #convert html to set of strings
   comp_scrape <- comp_html %>%
     html_nodes(".fact-label , .fact-value") %>%
     html_text()
   # leverage colon structure for identifying variable names, the item that follows is the value
   var_idx <- c(str_which(comp_scrape, ":"))
-  
+  # put the variable names and values into a tall dataframe that we can convert to wide later
+  # we don't move to tall here because every house has a different number of values, as entered by the realtor
   comp_df <- data.frame(key=comp_scrape[var_idx],
                         value=comp_scrape[var_idx+1]) %>%
     filter(!duplicated(key)) 
   return(comp_df)
 }
 comp_num=5
-get_house_df(my_comp_list[[2]]["links",comp_num][[1]]$homedetails)
+comp_url <- my_comp_list[[2]]["links",comp_num][[1]]$homedetails
+get_house_df(comp_url)
 
+
+#--------------------------------------------------------------------------
 ### Find all sales of single family homes in Oxford in last 2 years
+
 # save urls from the 10 pages of sales links on main Oxford Zillow Page
+# (and yes, this was a pain in the neck to manually grab URLs, but it was better to be done and wonky, than not done and pretty)
 sales_pages <- read.csv("~/Github/search2020/TeachingDemo/OxfordSales.csv", header=F,stringsAsFactors = FALSE)
 # loop over pages saving the details url links for each home sold 
 all_sold_addresses <- NULL
@@ -79,17 +90,25 @@ for(page in 1:nrow(sales_pages)){
     str_split(sales_mess[[1]][x],"\\\",")[[1]][1]
   })
   all_sold_addresses <- c(all_sold_addresses,sold_addresses)
+  # Sleep randomly between scrapes so as not to upset any auto-moderators
   Sys.sleep(runif(1,3,7))
 }
 all_sold_addresses
 
 
 ### Combine into tidy df with one row per house, start to gather info on homes
-# all_sold <- data.frame(street = all_sold_addresses, url="NA", zpid = "NA",
-#                       lat=NA, long=NA, zestimate=NA, stringsAsFactors = FALSE)
-# all_sold_full_lists <- list(NULL)
-# remove i=36, 122, 141, 151, 169, 176, 203, 215, 280, 281, 323, 370, 382, 392, 393
-for(i in 393:nrow(all_sold)){
+### Loop over all addresses and use ZillowR to get API info about locations, urls, Zillow estimated prices
+#!# WARNING: Needs to be improved here to allow gentle fail built in for failed API queries 
+# manually removed broken i=36, 122, 141, 151, 169, 176, 203, 215, 280, 281, 323, 370, 382, 392, 393 
+
+# Initialize to capture simplified set of info in data frame and 
+# a list of all API info that could be accessed again without API queries
+all_sold <- data.frame(street = all_sold_addresses, url="NA", zpid = "NA",
+                       lat=NA, long=NA, zestimate=NA, stringsAsFactors = FALSE)
+all_sold_full_lists <- list(NULL)
+# Note: this may need to be temporary/unsaved objects to be in compliance with API Terms of Service (unsure of legal-ese)
+
+for(i in 1:nrow(all_sold)){
   # look up sold house via address
   sold_house <- GetSearchResults(address = all_sold_addresses[i], citystatezip = 'Oxford, OH')
   # Convert from xml to a nested list of home attributes
@@ -107,11 +126,9 @@ for(i in 393:nrow(all_sold)){
     print(i)
   }
 }
+all_sold
 
-# save(all_sold, all_sold_full_lists, file="sold_homes.Rdata")
-load(file="sold_homes.Rdata")
-
-all_sold <- na.omit(all_sold)
+### Now use our URL scraping function to point to each of the urls in the set of Oxford houses
 details_tall_all <- NULL
 for(i in 1:nrow(all_sold)){
   house_detail <- get_house_df(all_sold$url[i]) 
@@ -123,11 +140,12 @@ for(i in 1:nrow(all_sold)){
   print(i)
 }
 
+# create simple set of column
 details_tall <- details_tall_all %>%
   filter(key %in% c("Baths", "Beds", "Floor size","Parking", 
                     "Last sale price/sqft","Last sold","Lot")) 
 
-
+# Clean the variables, go from tall to wide, merge with API details, parse strings and subset to bound lot and price
 oxford_real_estate <- details_tall %>% 
   unique() %>%
   spread(key, value) %>%
@@ -144,7 +162,7 @@ oxford_real_estate <- details_tall %>%
   filter(lot_size < 1000000,
          sale_price < 400000)
 
-# save(all_sold, all_sold_full_lists,details_tall,details_tall_all file="sold_homes2.Rdata")
+# save(all_sold, all_sold_full_lists,details_tall,details_tall_all, file="sold_homes.Rdata")
 
 
 
