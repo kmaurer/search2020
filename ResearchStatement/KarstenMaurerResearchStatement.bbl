@@ -1,0 +1,59 @@
+\begin{thebibliography}{9}
+\newcommand{\enquote}[1]{``#1''}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Alessio et~al.(2018)Alessio, Malay, Maurer, Bailer, and
+  Rubin}]{alessio2018international}
+Alessio, H., Malay, N., Maurer, K., Bailer, J., and Rubin, B. (2018),
+  \enquote{International Review of Research in Open and Distributed Learning,}
+  \textit{Interaction}, 19.
+
+\bibitem[{Alessio and Maurer(2018)}]{alessio2018impact}
+Alessio, H. and Maurer, K. (2018), \enquote{The Impact of Video Proctoring in
+  Online Courses.} \textit{Journal on Excellence in College Teaching}, 29,
+  183--192.
+
+\bibitem[{Alessio et~al.(2017)Alessio, Malay, Maurer, Bailer, and
+  Rubin}]{alessio2017examining}
+Alessio, H.~M., Malay, N., Maurer, K., Bailer, A.~J., and Rubin, B. (2017),
+  \enquote{Examining the effect of proctoring on online test scores.}
+  \textit{Online Learning}, 21, 146--161.
+
+\bibitem[{Anderson et~al.(2013)Anderson, Burks, Carpenter, G{\"o}tte, Maurer,
+  Nosenzo, Potter, Rocha, and Rustichini}]{anderson2013self}
+Anderson, J., Burks, S.~V., Carpenter, J., G{\"o}tte, L., Maurer, K., Nosenzo,
+  D., Potter, R., Rocha, K., and Rustichini, A. (2013), \enquote{Self-selection
+  and variations in the laboratory measurement of other-regarding preferences
+  across subject pools: evidence from one college student and two adult
+  samples,} \textit{Experimental Economics}, 16, 170--189.
+
+\bibitem[{Garrett et~al.(2018)Garrett, Nar, Fisher, and
+  Maurer}]{garrett2018ggvoronoi}
+Garrett, R.~C., Nar, A., Fisher, T.~J., and Maurer, K. (2018),
+  \enquote{ggvoronoi: Voronoi Diagrams and Heatmaps with ggplot2.} \textit{J.
+  Open Source Software}, 3, 1096.
+
+\bibitem[{Maurer and Bennette(2019)}]{maurer2018facility}
+Maurer, K. and Bennette, W. (2019), \enquote{Facility Locations Utility for
+  Uncovering Classifier Overconfidence,} \textit{arXiv preprint
+  arXiv:1810.05571}.
+
+\bibitem[{Maurer et~al.(2019)Maurer, Hudiburgh, Werwinski, and
+  Bailer}]{maurer2019content}
+Maurer, K., Hudiburgh, L., Werwinski, L., and Bailer, J. (2019),
+  \enquote{Content Audit for p-value Principles in Introductory Statistics,}
+  \textit{The American Statistician}, 73, 385--391.
+
+\bibitem[{Maurer and Lock(2016)}]{maurer2016comparison}
+Maurer, K. and Lock, D. (2016), \enquote{Comparison of learning outcomes for
+  simulation-based and traditional inference curricula in a designed
+  educational experiment,} \textit{Technology Innovations in Statistics
+  Education}, 9.
+
+\bibitem[{Miljkovic et~al.(2018)Miljkovic, Miljkovic, and
+  Maurer}]{miljkovic2018examining}
+Miljkovic, T., Miljkovic, D., and Maurer, K. (2018), \enquote{Examining the
+  impact on mortality arising from climate change: important findings for the
+  insurance industry,} \textit{European Actuarial Journal}, 8, 363--381.
+
+\end{thebibliography}

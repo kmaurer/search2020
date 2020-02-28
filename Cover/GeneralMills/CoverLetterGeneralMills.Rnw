@@ -1,0 +1,89 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plain Cover Letter
+% LaTeX Template
+% Version 1.0 (28/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rensselaer Polytechnic Institute 
+% http://www.rpi.edu/dept/arc/training/latex/resumes/
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%  PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{letter} % Default font size of the document, change to 10pt to fit more text
+
+\usepackage{url}
+\usepackage{newcent} % Default font is the New Century Schoolbook PostScript font 
+\usepackage{helvet} % Uncomment this (while commenting the above line) to use the Helvetica font
+
+
+% \usepackage[top=0.05in, bottom=.1in, left=.9in, right=.9in]{geometry}
+
+
+\topmargin=-2.2in % Moves the top of the document 1 inch above the default
+\textheight=12.5in % Total height of the text on the page before text goes on to the next page, this can be increased in a longer letter
+\oddsidemargin=-10pt % Position of the left margin, can be negative or positive if you want more or less room
+\textwidth=6.7in 
+\let\raggedleft\raggedright % Pushes the date (at the top) to the left, comment this line to have the date on the right
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	ADDRESSEE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{letter}{General Mills\\
+1 General Mills Blvd \\
+Golden Valley, MN 55426
+}
+
+
+%----------------------------------------------------------------------------------------
+%	YOUR NAME & ADDRESS SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+Karsten T. Maurer \\
+5839 K Bell St \\ Oxford, OH 45056 \\ (763) 257-7962 \\ maurerkt@miamioh.edu \\ \url{http://kmaurer.github.io}
+\end{center}
+
+\signature{\includegraphics[keepaspectratio=TRUE]{signatureCursive.png} 
+% \\ Karsten Tait Maurer
+} % Your name for the signature at the bottom
+
+%----------------------------------------------------------------------------------------
+%	LETTER CONTENT SECTION
+%----------------------------------------------------------------------------------------
+
+\vspace{1cm}
+
+\opening{To the Hiring Team,} 
+
+I am writing to apply for the advertised position of Senior Data Scientist (job number-12076). I am currently a Statistics professor at Miami University in Oxford, Ohio. I am seeking to transition my career and relocate back closer to family in the Twin Cities. In the five years following my PhD in Statistics from Iowa State, I have primarily taught and researched in the areas of data visualization, machine learning, statistical programming, and statistical computing. Teaching advanced data science topics to advanced students has pushed me to form a strong understanding in these areas. It is a personal point of pride that my former students will reach out to let me know how the computational, data visualization, and predictive modeling skills that I instilled have been indispensable as they start their careers. My teaching experience prepares me to \textit{advocate and educate on the value of data-driven decisions}. 
+
+
+My research demonstrates my ability to solve a wide range of challenging problems outside of the classroom and deliver actionable insights using my data science skill sets in collaborative settings. The contents of my resume and web portfolio will demonstrate that I have served to support colleagues solve contextual problems across many disciplines, and worked with other data experts to explore and expand methods for data visualization and machine learning. I have also mentored several student data science projects: such as building custom data dashboards for a client of the Center for Analytics and Data Science, developing adversarial methods within evaluation of text classifiers then generalizing to black-box classifiers, creating a \texttt{ggplot2} extension package in R for voronoi diagrams, and crafting data narratives for international data analysis competitions. My research and mentoring experience prepares me to \textit{collaborate, coach and learn with your team of experienced data scientists}. 
+
+My substantial experience in relevant fields, interdisciplinary and machine learning research, and active mentoring and collaborating with colleagues and students in data science make me a strong fit for your advertised position. I would greatly enjoy discussing the position in the weeks to come. If there is any additional information that you require, I am happy to supply it to you. Thank you very much for your time and consideration.
+
+\addtolength{\medskipamount}{-1\medskipamount}
+\closing{Sincerely,}
+
+Karsten Maurer, PhD
+
+Enclosed: Resume \\
+
+%----------------------------------------------------------------------------------------
+
+\end{letter}
+
+\end{document}

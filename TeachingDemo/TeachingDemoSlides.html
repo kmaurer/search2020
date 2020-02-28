@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>K-Nearest Neighbor Predictive Models</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Karsten Maurer" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# K-Nearest Neighbor Predictive Models
+### Karsten Maurer
+### November 11th, 2019
+
+---
+
+
+&lt;style&gt;
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+&lt;/style&gt;
+
+
+
+
+
+
+
+### Who am I?
+
+&lt;img src="http://kmaurer.github.io/CV_files/figure-html/unnamed-chunk-1-1.png" width="320px" /&gt;
+
+#### Karsten Maurer
+
+- Originally from Champlin, MN
+
+- Went to Minnesota, Morris for BA in history and statistics
+
+- Went to Iowa State for PhD in statistics
+
+--
+
+- Currently an Assistant Professor of Statistics at Miami University
+  
+    + Teaching: Data Visualization, Predictive Modeling, Statistical Programming
+    + Research: Statistics Education, Machine Learning, Visualization, Collaborative Consulting
+
+
+
+---
+### Predictive Modeling Background - Discussion
+
+#### What types of predictive models have you encountered in your classes so far?
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+--
+
+#### What are the two general types of responses that we might try to predict? (Supervised Learning)
+
+
+---
+class: center, middle
+## A **K-Nearest Neighbor model** generates predictions based on the responses of the **K most similar** previously observed instances. 
+
+--
+
+... before getting into any notation, let's build the intuition with an exercise.
+
+---
+
+### Predicting Sleep
+
+You have two tasks:
+
+1. Think back to last night. How many hours of sleep did you get? **This is your response value**
+&lt;br&gt;&lt;br&gt;
+
+2. Ask the 3 people sitting closest to you how much sleep they got. **These are your neighbor's responses**
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+--
+
+### Making a prediction about your sleep
+
+Suppose that where you sit in the room (predictor) holds information about how much you sleep (response)
+&lt;br&gt;&lt;br&gt;
+
+How could we use your neighbor's sleep values to predict for you?
+
+---
+
+### KNN Regression
+
+If `\(Y_i \in \mathbb{R}\)` is your numeric response for instances `\(i=1,2,...,n\)`
+
+and `\(\bf{X_i} \in \mathbb{R}^p\)` is your `\(p\)`-dimensional numeric predictors
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+--
+
+Suppose we have new instance with predictors `\(\bf{X_0}\)` 
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+--
+
+Define the set of K-Nearest Neighbors based on some distance function `\(d(.)\)` (Typically Euclidean)
+
+`\(\mathcal{N}_0 = \{i | d({\bf X_i}, {\bf X_0}) \le d({\bf X_{[k]}}, {\bf X_0})\}\)`
+
+&lt;br&gt;&lt;br&gt;
+
+
+--
+
+Prediction is average of K-neighbors:   `\(\hat{Y}_0 = \frac{1}{K}\sum_{i \in \mathcal{N}_0} Y_i\)`
+
+---
+
+### KNN Sleep Regression
+
+`\(Y\)`  = sleep hours, `\(X_1\)` =Position Left/Right, `\(X_2\)` =Position Front/Back
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+
+`\(\bf{X_0}\)` is your seat location
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+`\(\mathcal{N}_0\)`  are indices that identify your 3 closest neighbors
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+Our prediction for you is the average sleep from your 3 closest neighbors
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+---
+
+### KNN Regression Algorithm
+
+To predict for any new observation `\(\bf{X_0}\)`
+&lt;br&gt;&lt;br&gt;
+
+1. Compute the distances between `\(\bf{X_0}\)` and all previous observations
+&lt;br&gt;&lt;br&gt;
+
+2. Sort distances smallest to largest
+&lt;br&gt;&lt;br&gt;
+
+3. Select K smallest, record which observations these belong to
+&lt;br&gt;&lt;br&gt;
+
+4. Compute the average response of these observations
+
+---
+
+### Case Study: Real Estate
+
+&lt;img src="OxfordHouses.png" width="8000" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Case Study: Real Estate
+
+&lt;img src="OxfordHousesPlusMe.png" width="8000" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+### Case Study: Real Estate
+
+&lt;img src="OxfordHousesPlusMe_standardized.png" width="8000" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Case Study: Real Estate
+
+&lt;img src="OxfordHousesDistFromMe.png" width="8000" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Case Study: Real Estate
+
+
+
+
+![](SortingNeighbors.gif)
+
+---
+
+### Case Study: Real Estate
+
+&lt;img src="OxfordHousesDistFromMeArranged.png" width="8000" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Case Study: Real Estate
+
+&lt;img src="nearestNeighbor.png" width="8000" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Case Study: Real Estate
+
+&lt;img src="OxfordHousesDistFromMeArranged_10nn.png" width="8000" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Case Study: Real Estate
+
+&lt;img src="OxfordHousesDistFromMeArranged_25nn.png" width="8000" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+class: center, middle
+## A **K-Nearest Neighbor model** generates predictions based on the responses of the **K most similar** previously observed instances. 
+
+
+
+---
+
+class: center, middle
+## Now that we have some intuition for the algorithms, &lt;br&gt;&lt;br&gt; how do we **use** KNN regression in an **applied** setting? 
+
+---
+
+class: center, middle
+
+## Let's **code** it up with the house prices data! 
+
+## If you have your laptop with **R** and **RStudio** installed, please code along!
+
+&lt;br&gt;&lt;br&gt;
+
+## Starter Code Available at [kmaurer.github.io](kmaurer.github.io)
+
+---
+
+### Benefits and Drawbacks of KNN
+
+Predictions not based on linear combinations of input variables
+
+- This could be *bad* if there is a linear relationship between inputs and the response
+- This could be *good* if there is a non-linear, localized structure to predictive structure
+- In the real estate context, how are prices set?
+
+--
+&lt;br&gt;&lt;br&gt;
+
+Computationally Demanding
+
+- For each new instance, must calculate and sort `\(n\)` distances
+
+--
+&lt;br&gt;&lt;br&gt;
+
+Distance Metrics
+
+- Euclidean distances depend on scaling in each dimension
+- Other distance metrics possible (e.g. Manhattan distance)
+
+--
+&lt;br&gt;&lt;br&gt;
+
+Easily adapts for *classification* problems
+
+- Make prediction based on *most common class* in neighborhood
+
+---
+
+### Big Takeaways
+
+&lt;br&gt;
+
+#### A **K-Nearest Neighbor model** generates predictions based on the responses of the **K most similar** previously observed instances. 
+
+--
+
+&lt;br&gt;&lt;br&gt;
+
+#### Algorithm: Compute the distances, Sort, Select K neighbors, Make prediction based on neighbors 
+
+--
+
+&lt;br&gt;&lt;br&gt;
+
+#### There are user-friendly implementations of KNN available in open-source programming languages
+
+---
+
+#### Suggested Supplementary Readings
+
+- James, Witten, Hastie and Tibshirani (2013) Introduction to Statistical Learning. URL *http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf*
+- Grolemund and Wickham (2017) R For Data Science. URL *https://r4ds.had.co.nz/*
+
+#### Software and Data
+
+- Garrett, Nar, Fisher, Maurer (2018). ggvoronoi: Voronoi Diagrams and Heatmaps with ggplot2. J. Open Source Software, 3(32), 1096.
+- Kuhn (2019). caret: Classification and Regression Training. R package version 6.0-84. *https://CRAN.R-project.org/package=caret*
+- R Core Team (2019). R: A language and environment for statistical computing. 
+- R Foundation for Statistical Computing, Vienna, Austria. URL *https://www.R-project.org/*.
+- RStudio Team (2016). RStudio: Integrated Development for R. RStudio, Inc., Boston, MA URL *http://www.rstudio.com/*.
+- Temple Lang, CRAN Team (2019). XML: Tools for Parsing and Generating XML Within R and S-Plus. R package version 3.98-1.20.  *https://CRAN.R-project.org/package=XML*
+- Wickham (2017). tidyverse: Easily Install and Load the 'Tidyverse'. R package version 1.2.1. *https://CRAN.R-project.org/package=tidyverse*
+- Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.4. *https://CRAN.R-project.org/package=rvest*
+- Xie (2019). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package version 1.22.
+- Zillow home listings data from Oxford, Ohio. *https://www.zillow.com/*
+
+---
+
+
+class: center, middle
+
+# Thanks!
+
+
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

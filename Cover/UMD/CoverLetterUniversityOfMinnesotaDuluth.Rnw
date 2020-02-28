@@ -1,0 +1,91 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plain Cover Letter
+% LaTeX Template
+% Version 1.0 (28/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rensselaer Polytechnic Institute 
+% http://www.rpi.edu/dept/arc/training/latex/resumes/
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%  PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{letter} % Default font size of the document, change to 10pt to fit more text
+
+\usepackage{url}
+\usepackage{newcent} % Default font is the New Century Schoolbook PostScript font 
+\usepackage{helvet} % Uncomment this (while commenting the above line) to use the Helvetica font
+
+
+% \usepackage[top=0.05in, bottom=.1in, left=.9in, right=.9in]{geometry}
+
+
+\topmargin=-2.2in % Moves the top of the document 1 inch above the default
+\textheight=12.5in % Total height of the text on the page before text goes on to the next page, this can be increased in a longer letter
+\oddsidemargin=-10pt % Position of the left margin, can be negative or positive if you want more or less room
+\textwidth=6.7in 
+\let\raggedleft\raggedright % Pushes the date (at the top) to the left, comment this line to have the date on the right
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	ADDRESSEE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{letter}{University of Minnesota, Duluth\\
+Mathematics and Statistics Department\\
+140 Solon Campus Ctr\\
+1117 University Drive\\
+Duluth, MN 55812
+}
+
+
+%----------------------------------------------------------------------------------------
+%	YOUR NAME & ADDRESS SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+Karsten T. Maurer \\
+5839 K Bell St \\ Oxford, OH 45056 \\ (763) 257-7962 \\ maurerkt@miamioh.edu \\ \url{http://kmaurer.github.io}
+\end{center}
+
+\signature{\includegraphics[keepaspectratio=TRUE]{signatureCursive.png} 
+% \\ Karsten Tait Maurer
+} % Your name for the signature at the bottom
+
+%----------------------------------------------------------------------------------------
+%	LETTER CONTENT SECTION
+%----------------------------------------------------------------------------------------
+
+\opening{Dear Dr. Sellers and Hiring Committee Members,} 
+
+I am writing to apply for the advertised position of assistant professor of Mathematics and Statistics in your department. I am currently a tenure track assistant professor of Statistics in my fifth year at Miami University in Oxford, Ohio. While I am deeply appreciative of my wonderful students, colleagues and mentors at Miami, I am seeking to relocate closer to family in Minnesota. I was delighted to find that the University of Minnesota Duluth is hiring, as it is an excellent professional opportunity at another branch of my undergraduate alma mater. My substantial teaching experience, productive research program and active service contributions in my current tenure track position demonstrate that I am a strong candidate who is imminently capable of your advertised role. 
+
+Between my graduate experience and my current position, I have taught statistics for over seven years at the university level, with 29 class sections in a wide variety of courses including: data visualization, statistical learning, statistical programming, statistical computing, data practicum, and several variants of introductory statistics. I am passionate and effective at teaching the methodological, computational and communicative skills necessary in data science and statistics. This passion bleeds into my research, with most of my work in the areas of statistics education, statistical/machine learning methodology and providing statistical contributions on collaborative interdisciplinary projects. I include and mentor both undergraduate and graduate students in my research work. In my service record, you will find that I am heavily engaged in departmental and university service. I serve on committees for undergraduate curriculum, graduate education, hiring, and colloquium coordination. I also advise and recruit many statistics students, help to organize the ASA Datafest at Miami, and volunteer at events that encourage high school students from underrepresented groups to pursue STEM and Data careers. 
+
+% My service record involves several support roles in the day-to-day functionality of the department, with work on several committees (hiring, undergraduate curriculum, graduate education, colloquium coordination), and advising students. I also seek out service opportunities to recruit students to pursue degrees in data centered fields, and provide data science opportunities for current students. I am actively involved with the Center for Analytics and Data Science by helping to running the locally organized ASA Datafest Competition at Miami and mentor a team of undergraduates work on a client-based analytics project. I also volunteer at the Bridges Program and the CIQS Day events which run learning activities to encourage high school students from underrepresented groups to pursue STEM and Data careers, respectively. 
+
+My substantial teaching experience, interdisciplinary and machine learning research, and active engagement and inclusion of students in data science through research and service make me a strong fit for your advertised position. I would greatly enjoy discussing the position with you in the weeks to come. If there is any additional information that you require, I am happy to supply it to you. Thank you very much for your time and consideration.
+
+\addtolength{\medskipamount}{-1\medskipamount}
+\closing{Sincerely,}
+
+
+Enclosed: CV, Statements of Teaching Philosophy, Research and Diversity, and Transcripts. \\
+Reference letters to follow from Dr. John Bailer, Dr. Thomas Fisher and Dr. Walter Bennette.
+% List your enclosed documents here, comment this out to get rid of the "encl:"
+
+%----------------------------------------------------------------------------------------
+
+\end{letter}
+
+\end{document}

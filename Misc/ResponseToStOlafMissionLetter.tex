@@ -1,0 +1,146 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plain Cover Letter
+% LaTeX Template
+% Version 1.0 (28/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rensselaer Polytechnic Institute 
+% http://www.rpi.edu/dept/arc/training/latex/resumes/
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%  PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{letter}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt} % Default font size of the document, change to 10pt to fit more text
+
+\usepackage{url}
+\usepackage{newcent} % Default font is the New Century Schoolbook PostScript font 
+\usepackage{helvet} % Uncomment this (while commenting the above line) to use the Helvetica font
+
+\usepackage{etoolbox}
+% \AtBeginEnvironment{quote}{\singlespacing\small}
+
+% \usepackage[top=0.05in, bottom=.1in, left=.9in, right=.9in]{geometry}
+
+
+\topmargin=-2.2in % Moves the top of the document 1 inch above the default
+\textheight=12.5in % Total height of the text on the page before text goes on to the next page, this can be increased in a longer letter
+\oddsidemargin=-10pt % Position of the left margin, can be negative or positive if you want more or less room
+\textwidth=6.7in 
+\let\raggedleft\raggedright % Pushes the date (at the top) to the left, comment this line to have the date on the right
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	ADDRESSEE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{letter}{Dr. David R. Anderson, President \\
+St. Olaf College \\
+Tomson Hall 260 \\
+1520 St. Olaf Avenue \\
+Northfield, Minnesota 55057
+}
+
+
+%----------------------------------------------------------------------------------------
+%	YOUR NAME & ADDRESS SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+Karsten T. Maurer \\
+5839 K Bell St \\ Oxford, OH 45056 \\ (763) 257-7962 \\ maurerkt@miamioh.edu \\ \url{http://kmaurer.github.io}
+\end{center}
+
+\signature{\includegraphics[keepaspectratio=TRUE]{signatureCursive.png} 
+% \\ Karsten Tait Maurer
+} % Your name for the signature at the bottom
+
+%----------------------------------------------------------------------------------------
+%	LETTER CONTENT SECTION
+%----------------------------------------------------------------------------------------
+
+\opening{Dear President Anderson,} 
+
+My name is Karsten Maurer. I am a candidate for the position of assistant professor of Statistics in the Mathematics, Statistics and Computer Science Department at St. Olaf. I am writing today because I was informed that I will have the opportunity to meet with you during my on-campus interview. I greatly appreciate the chance to meet with you and discuss how I would fit into the campus community at St. Olaf and work to contribute toward the college mission. Attached you will find my brief written reflection on the college mission statement and my curriculum vitae. I look forward to our meeting next week. Thank you again for your time. 
+
+\addtolength{\medskipamount}{-1\medskipamount}
+\closing{Sincerely,\\Karsten Maurer \vspace{.1in}}
+
+
+
+\vspace{.1in}
+
+% List your enclosed documents here, comment this out to get rid of the "encl:"
+Enclosed: Reflection on Mission, CV
+%----------------------------------------------------------------------------------------
+
+\end{letter}
+
+\end{document}
+
+
+
+
+
+
+
+

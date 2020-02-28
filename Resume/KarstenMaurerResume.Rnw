@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Graduate Curriculum Vitae
+% LaTeX Template
+% Version 1.1 (9/12/12)
+%
+% This template has been downloaded from:
+  % http://www.LaTeXTemplates.com
+%
+% Original author:
+  % Rensselaer Polytechnic Institute (http://www.rpi.edu/dept/arc/training/latex/resumes/)
+%
+% Important note:
+  % This template requires the res.cls file to be in the same directory as the
+% .tex file. The res.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+  %  PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+  
+  \documentclass[margin, 10pt]{res} % Use the res.cls style, the font size can be changed to 11pt or 12pt here
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{helvet} % Default font is the helvetica postscript font
+%\usepackage{newcent} % To change the default font to the new century schoolbook postscript font uncomment this line and comment the one above
+
+\setlength{\textwidth}{5.1in} % Text width of the document
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+  %	NAME AND ADDRESS SECTION
+%----------------------------------------------------------------------------------------
+  
+  
+  
+  %----------------------------------------------------------------------------------------
+  
+  \begin{resume}
+
+\moveleft.5\hoffset\centerline{\Large\bf Karsten Tait Maurer}
+\vspace{.05cm}
+\moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}
+\vspace{.05cm}
+
+%--------------------------------------------------------------------------
+  % Full Contact Information %
+  %--------------------------------------------------------------------------
+  
+  
+  \section{CONTACT}
+
+\begin{tabular}{p{6.5cm}p{5cm}}
+\textit{Phone:} 763-257-7962
+\newline \textit{Webpage:} \href{https://kmaurer.github.io}{kmaurer.github.io}
+% \newline \textit{LinkedIn:}\url{linkedin.com/in/karstenmaurer}
+&
+\textit{Email:} maurerkt@miamioh.edu
+\newline \textit{Github:} \href{https://github.com/kmaurer}{github.com/kmaurer}  
+% \newline \textit{Research Gate:}\url{researchgate.net/profile/Karsten_Maurer}
+\end{tabular}
+
+%----------------------------------------------------------------------------------------
+  %	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+  
+\section{EDUCATION}
+
+\begin{tabular}{p{3.75cm}p{3.75cm}p{5.5cm}}
+Ph.D., Statistics, 2015 
+\newline Iowa State University 
+
+&
+
+M.S., Statistics, 2011
+\newline Iowa State University
+
+&
+
+\newline B.A., Statistics \& History, 2009  
+\newline University of Minnesota Morris
+\end{tabular}
+
+%----------------------------------------------------------------------------------------
+  %	PROFESSIONAL EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+  
+\section{EXPERIENCE}
+
+{\sl Assistant Professor of Statistics} at Miami University (Oxford OH) \hfill 2015 - Present
+\begin{itemize} \itemsep -2pt % Reduce space between items
+\item {\it Instructor} -- Teaching/developing courses in data visualization, machine learning, statistical programming, statistical computing, and design of experiments.
+\item {\it Advisor} -- Directed 6 undergraduate and 10 graduate research projects. \\Also mentor teams for client projects in Center for Analytics and Data Science. 
+\item {\it Researcher} -- 11 publications, 10 international conference presentations \\ See \href{https://kmaurer.github.io/CV}{kmaurer.github.io/CV} for publication, presentation and project details.
+\end{itemize}
+{\sl Summer Research Fellow} at the Air Force Research Lab (Rome NY) \hfill  2016 \& 2018 
+
+\begin{itemize} \itemsep -2pt % Reduce space between items
+\item {\it Researcher} -- Developing machine learning algorithms for \href{http://kmaurer.github.io/documents/conferences/JSM2017.pdf}{weighted ensemble classification} and \href{https://arxiv.org/pdf/1810.05571.pdf}{active learning for detecting classifier confidence deficiencies}. 
+\end{itemize}
+% {\sl Graduate Student} at Iowa State University, Ames IA \hfill 2009 - 2015 
+% 
+% \begin{itemize} \itemsep -2pt % Reduce space between items
+% \item {\it Grad Instructor} -- Introductory Statistics
+% \item {\it Statistical Consultant} -- Programming and analysis support
+% \item {\it Workshop Developer}  -- ``A Week of R'' Workshops (7 iterations)
+% \end{itemize} 
+
+\section{RELEVANT SKILLSETS} 
+
+{\it Statistical Thinking} -- Formal education provides a strong foundation and rigorous statistical lens through which data problems are approached.
+
+{\it Programming} -- 11 years of heavy professional programming in R. Deep understanding of base R, data structures, functional programming, debugging, profiling, and R package development and maintenance. Extensive experience with common R packages: \texttt{dplyr}, \texttt{tidyr}, \texttt{devtools}, \texttt{ggplot2}, \texttt{caret}, \texttt{plotly}, \texttt{shiny}, \texttt{RMySQL}, etc. Additional programming experience in SAS, Python, Stata and SPSS.
+% Extensive experience with common R packages: \texttt{tidyverse} data pipeline workflow, data visualization in \texttt{ggplot2} and \texttt{plotly}, web applications through \texttt{shiny}, database connection with \texttt{RMySQL}. Additional, but less intensive, programming experience in SAS, Python, Stata and SPSS. 
+
+{\it Machine Learning} -- Published and ongoing research developing machine learning algorithms. Professor of a machine learning course for senior undergraduates and masters students, covering broad range of supervised and unsupervised learning methods. 
+
+{\it Data Visualization} -- Efficient and skilled with designing visualizations in R to support a data-centric narrative. Taught and developed curriculum for a data visualization course in R, and currently extending research on \href{http://kmaurer.github.io/documents/conferences/JSM2019.pdf}{lineup plots for visual inference}. 
+
+{\it SQL} -- Construction of \texttt{shiny} web app as a teaching tool for students to take random samples from large SQL databases. Additionally taught standard SQL queries in through PROC SQL in SAS-based programming course.
+  
+% using the \texttt{tidyverse}, \texttt{ggplot2}, \texttt{plotly}, and \texttt{tidyverse}.
+ 
+{\it Technical and Non-Technical Communication} -- Faculty career has ingrained skills for communicating challenging ideas to diverse audiences: students, data experts, administrators, and collaborators outside of data science. 
+
+{\it Collaborative} -- Reputation as an applied statistician with strong data science skills and a broad curiosity for problem-solving has opened opportunity for contribution to many collaborative, inter-disciplinary research projects. 
+
+
+
+\section{HONORS \& AWARDS}
+1\textsuperscript{st} Place Award for Short \href{https://kmaurer.github.io/documents/papers/MaurerBennetteICMLA.pdf}{Paper} on Machine Learning at \href{https://www.icmla-conference.org/icmla19/}{ICMLA 2019} \hfill 2019\\
+Mentor to student teams winning {2\textsuperscript{nd} \& 3\textsuperscript{rd}Place ASA Data Expo} \hfill 2019\\
+Armstrong Endowed Professorship -- collaborative grant in interactive media \hfill 2019 \\
+Air Force Research Lab [\$47000 in Grants] -- Research Fellowships \hfill 2016 \& 2018\\
+\href{http://stat-computing.org/dataexpo/2013/}{2\textsuperscript{nd} Place ASA Data Expo} - Teammates: Adam Loy, Dave Osthus \hfill 2013 
+%----------------------------------------------------------------------------------------
+
+\end{resume}
+\end{document}

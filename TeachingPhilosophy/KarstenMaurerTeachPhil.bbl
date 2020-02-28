@@ -1,0 +1,30 @@
+\begin{thebibliography}{5}
+\newcommand{\enquote}[1]{``#1''}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Aliaga et~al.(2005)Aliaga, Cobb, Cuff, Garfield, Gould, Lock, Moore,
+  Rossman, Stephenson, Utts, Velleman, and Witmer}]{GAISEcollege}
+Aliaga, M., Cobb, G., Cuff, C., Garfield, J., Gould, R., Lock, R., Moore, T.,
+  Rossman, A., Stephenson, B., Utts, J., Velleman, P., and Witmer, J. (2005),
+  \enquote{Guidelines for Assessment and Instruction in Statistics Education:
+  College Report,} .
+
+\bibitem[{Cobb(2007)}]{Cobb2007}
+Cobb, G. (2007), \enquote{The Introductory Statistics Course: A Ptolemaic
+  Curriculum,} \textit{Technology Innovations in Statistics Education}.
+
+\bibitem[{Lock et~al.(2013)Lock, Lock, K.L.Morgan, Lock, and D.F.Lock}]{Lock5}
+Lock, R., Lock, P., K.L.Morgan, Lock, E., and D.F.Lock (2013),
+  \textit{Statistics: Unlocking the Power of Data}, Hoboken, NJ: Wiley.
+
+\bibitem[{Moore(1997)}]{Moore1997}
+Moore, D.~S. (1997), \enquote{New Pedagogy and New Content: The Case of
+  Statistics,} \textit{International Statistical Review}.
+
+\bibitem[{Tintle et~al.(2014)Tintle, Chance, Cobb, Rossman, Roy, Swanson, and
+  Vanderstoep}]{ISI}
+Tintle, N., Chance, B., Cobb, G., Rossman, A., Roy, S., Swanson, T., and
+  Vanderstoep, J. (2014), \textit{Introduction to Statistical Investigations},
+  Hoboken, NJ: Wiley.
+
+\end{thebibliography}
